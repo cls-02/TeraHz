@@ -19,9 +19,13 @@ print('This utility is part of the TeraHz project')
 
 wavelens = pd.Series(realorder)
 
-wavetable = pd.DataFrame(columns=wavelens)
+wavetable = pd.DataFrame(columns=realorder)
 
 with ser.Serial(uartpath, uartbaud, timeout=uarttout) as sensor:
     sensor.write(b'ATCDATA\n')
-    response = pd.Series([float (i) for i in sensor.readline().decode()[:-3].split(',')]) # works, do not touch!
-    print(response)
+    rawresp = sensor.readline().decode()
+    # parses, calculates and saves the data
+    response = pd.Series([float(i)/35.0 for i in rawresp[:-3].split(',')], index=responseorder)
+    data = pd.DataFrame(response, index=realorder, columns = ['uW/cm^2']) # puts data into a DataFrame
+    data.insert(0, 'wavelenght', wl) #inserts a legend
+    print(data)
