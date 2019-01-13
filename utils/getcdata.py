@@ -14,17 +14,19 @@ uarttout = 5
 wl = [410, 435, 460, 485, 510, 535, 560, 585, 610, 645, 680, 705, 730, 760, 810, 860, 900, 940]
 responseorder = [i for i in 'RSTUVWGHIJKLABCDEF'] # works, do NOT touch!
 realorder = [i for i in 'ABCDEFGHRISJTUVWKL']
-plt.ion()
+
 
 print('getcdata')
 print('This utility is part of the TeraHz project')
 
 wavelens = pd.Series(realorder)
-data=pd.DataFrame([], [])
 
-wavetable = pd.DataFrame(columns=realorder)
-graph=plt.figure()
-plot=graph.add_subplot(111)
+
+plt.ion()
+win = plt.figure()
+spectrum=win.add_subplot(111)
+
+
 with ser.Serial(uartpath, uartbaud, timeout=uarttout) as sensor:
     while True:
         sensor.write(b'ATCDATA\n')
@@ -34,7 +36,10 @@ with ser.Serial(uartpath, uartbaud, timeout=uarttout) as sensor:
         data = pd.DataFrame(response, index=realorder, columns = ['uW/cm^2']) # puts data into a DataFrame
         data.insert(0, 'wavelenght', wl) #inserts a legend
         print(data)
-        plot.cla()
-        line=plot.plot(data['wavelenght'], data['uW/cm^2'])
-        graph.canvas.draw()
+        spectrum.cla()
+        spectrum.plot(data['wavelenght'], data['uW/cm^2'])
+        spectrum.set_xlabel('Valovna dolžina')
+        spectrum.set_ylabel('uW/cm2')
+        win.canvas.draw()
+
         time.sleep(1)
