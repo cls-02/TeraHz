@@ -28,32 +28,32 @@ class Spectrometer:
 
     def setParameters(self, parameters={}):
         '''applies the parameters like LED light and gain to the spectrometer'''
-        # try:
-        if 'it_time' in parameters:
-            it_time = int(parameters['it_time'])
-            if it_time <=0 :
-                it_time = 1
-            self.serialObject.write('ATINTTIME={}\n'.format(string(it_time)).encode())
-            self.serialObject.readline()
+        try:
+            if 'it_time' in parameters:
+                it_time = int(parameters['it_time'])
+                if it_time <=0 :
+                    it_time = 1
+                self.serialObject.write('ATINTTIME={}\n'.format(string(it_time)).encode())
+                self.serialObject.readline()
 
-        if 'gain' in parameters:
-            gain = int(parameters['gain'])
-            if gain < 0 or gain > 3:
-                gain = 1
-            self.serialObject.write('ATGAIN={}\n'.format(gain).encode())
-            self.serialObject.readline()
+            if 'gain' in parameters:
+                gain = int(parameters['gain'])
+                if gain < 0 or gain > 3:
+                    gain = 1
+                self.serialObject.write('ATGAIN={}\n'.format(gain).encode())
+                self.serialObject.readline()
 
-        if 'led' in parameters:
-            led = bool(parameters['led'])
-            if led:
-                led=1
-            else:
-                led=0
-            self.serialObject.write('ATLED3={}\n'.format(led).encode())
-            self.serialObject.readline()
-        # except:
-        #    print('An exception occured during spectrometer initialization')
-        #    ex(1)
+            if 'led' in parameters:
+                led = bool(parameters['led'])
+                if led:
+                    led=1
+                else:
+                    led=0
+                self.serialObject.write('ATLED3={}\n'.format(led).encode())
+                self.serialObject.readline()
+        except:
+           print('An exception occured during spectrometer initialization')
+           ex(1)
 
     def startDataCollection(self):
         try:
