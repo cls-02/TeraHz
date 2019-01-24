@@ -26,25 +26,25 @@ class Spectrometer:
             ex(1)
         self.setParameters()
 
-    def setParameters(self, parameters={}):
+    def setParameters(self):
         '''applies the parameters like LED light and gain to the spectrometer'''
         try:
-            if 'it_time' in parameters:
-                it_time = int(parameters['it_time'])
+            if 'it_time' in self.parameters:
+                it_time = int(self.parameters['it_time'])
                 if it_time <=0 :
                     it_time = 1
                 self.serialObject.write('ATINTTIME={}\n'.format(string(it_time)).encode())
                 self.serialObject.readline()
 
-            if 'gain' in parameters:
-                gain = int(parameters['gain'])
+            if 'gain' in self.parameters:
+                gain = int(self.parameters['gain'])
                 if gain < 0 or gain > 3:
                     gain = 1
                 self.serialObject.write('ATGAIN={}\n'.format(gain).encode())
                 self.serialObject.readline()
 
-            if 'led' in parameters:
-                led = bool(parameters['led'])
+            if 'led' in self.parameters:
+                led = bool(self.parameters['led'])
                 if led:
                     led=1
                 else:
@@ -75,10 +75,11 @@ class Spectrometer:
 
 
     def __init__(self, path='/dev/ttyUSB0', baudrate=115200, tout=1, rrate=1, params={}):
-        self.path=path
-        self.baudrate=baudrate
-        self.timeout=1
-        self.rrate=rrate
+        self.path = path
+        self.baudrate = baudrate
+        self.timeout = 1
+        self.rrate = rrate
+        self.parameters = params
         try:
             self.serialObject = ser.Serial(path, baudrate, timeout=tout)
         except:
