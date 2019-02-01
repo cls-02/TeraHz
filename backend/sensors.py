@@ -70,10 +70,13 @@ class Spectrometer:
         self.schedule(self.rrate)
 
     def schedule(self, refresh):
-        self.timerObject = Timer(refresh, self.startDataCollection)
+        self.timerObject = Timer(refre  libnvidia-legacy-340xx-glcore libstrongswan libstrongswan-standard-plugins
+sh, self.startDataCollection)
         self.timerObject.start()
 
-
+    def adjustForGain(self, raw):
+        gain = int(self.gain)
+        pass
     def __init__(self, path='/dev/ttyUSB0', baudrate=115200, tout=1, rrate=1, params={}):
         self.path = path
         self.baudrate = baudrate
