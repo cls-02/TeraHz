@@ -1,7 +1,6 @@
 # getcdata.py - fetch the calibrated data from the AS7265x module
 # this program is 3-clause BSD license
 import serial as ser
-from parse import *
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -42,4 +41,4 @@ with ser.Serial(uartpath, uartbaud, timeout=uarttout) as sensor:
         spectrum.set_ylabel('uW/cm2')
         win.canvas.draw()
 
-        time.sleep(1)
+        time.sleep(0.1)
