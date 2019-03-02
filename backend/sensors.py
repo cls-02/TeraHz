@@ -93,7 +93,7 @@ class LxMeter:
             raise Exception('An exception occured opening the SMBus {}'.format(self.bus))
 
         try:
-            self.bus.write_byte_data(addr, 0xa0, 0x03) # enable the sensor
+            self.bus.write_byte_data(self.addr, 0xa0, 0x03) # enable the sensor
         except:
             raise Exception('An exception occured when enabling lux meter')
 
@@ -101,14 +101,14 @@ class LxMeter:
         '''Set the sensor gain. Either 1 or 16.'''
         if gain == 1:
             try:
-                temp = self.bus.read_byte_data(addr, 0xa1)
-                self.bus.write_byte_data(addr, 0xa1, 0xef & temp)
+                temp = self.bus.read_byte_data(self.addr, 0xa1)
+                self.bus.write_byte_data(self.addr, 0xa1, 0xef & temp)
             except:
                 raise Exception('An exception occured when setting lux meter gain')
         if gain == 16:
             try:
-                temp = self.bus.read_byte_data(addr, 0xa1)
-                self.bus.write_byte_data(addr, 0xa1, 0x10 | temp)
+                temp = self.bus.read_byte_data(self.addr, 0xa1)
+                self.bus.write_byte_data(self.addr, 0xa1, 0x10 | temp)
             except:
                 raise Exception('An exception occured when setting lux meter gain')
         else:
@@ -117,9 +117,9 @@ class LxMeter:
     def getGain(self):
         '''Get the gain from the sensor.'''
         try:
-            if self.bus.read_byte_data(addr, 0xa1) & 0x10 == 0x10:
+            if self.bus.read_byte_data(self.addr, 0xa1) & 0x10 == 0x10:
                 return 16
-            if self.bus.read_byte_data(addr, 0xa1) & 0x10 == 0x00:
+            if self.bus.read_byte_data(self.addr, 0xa1) & 0x10 == 0x00:
                 return 1
         except:
             raise Exception('An error occured when getting lux meter gain')
@@ -129,23 +129,23 @@ class LxMeter:
         if time < 0 or time > 2:
             raise Exception('Invalid integration time')
         try:
-            temp = self.bus.read_byte_data(addr, 0xa1)
-            self.bus.write_byte_data(addr, 0xa1, (temp & 0xfc) | time)
+            temp = self.bus.read_byte_data(self.addr, 0xa1)
+            self.bus.write_byte_data(self.addr, 0xa1, (temp & 0xfc) | time)
         except:
             raise Exception('An error occured setting lux integration time')
 
     def getIntTime(self):
         '''Get the lux sensor integration time.'''
         try:
-            return self.bus.read_byte_data(addr, 0xa1) & 0xfc
+            return self.bus.read_byte_data(self.addr, 0xa1) & 0xfc
         except:
             raise Exception('An error occured getting lux integration time')
 
     def getData(self):
         '''return the calculated lux value'''
         try:
-            chA = self.bus.read_word_data(addr, 0xac)
-            chB = self.bus.read_word_data(addr, 0xae)
+            chA = self.bus.read_word_data(self.addr, 0xac)
+            chB = self.bus.read_word_data(self.addr, 0xae)
         except:
             raise Exception('An error occured fetching lux channels')
 
