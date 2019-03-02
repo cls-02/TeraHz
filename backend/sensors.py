@@ -86,7 +86,7 @@ class Spectrometer:
 
 class LxMeter:
     def __init__(self, busNumber=1, addr=0x39):
-        self.addr = address
+        self.addr = addr
         try:
             self.bus = smbus2.SMBus(busNumber) # initialize the SMBus interface
         except:
