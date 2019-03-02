@@ -94,7 +94,7 @@ class LxMeter:
 
         try:
             self.bus.write_byte_data(self.addr, 0xa0, 0x03) # enable the sensor
-            setGain(16)
+            self.setGain(16)
         except:
             raise Exception('An exception occured when enabling lux meter')
 
@@ -138,7 +138,7 @@ class LxMeter:
     def getIntTime(self):
         '''Get the lux sensor integration time.'''
         try:
-            return self.bus.read_byte_data(self.addr, 0xa1) & 0xfc
+            return self.bus.read_byte_data(self.addr, 0xa1) & 0x03
         except:
             raise Exception('An error occured getting lux integration time')
 
