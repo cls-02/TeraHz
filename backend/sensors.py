@@ -94,6 +94,7 @@ class LxMeter:
 
         try:
             self.bus.write_byte_data(self.addr, 0xa0, 0x03) # enable the sensor
+            setGain(16)
         except:
             raise Exception('An exception occured when enabling lux meter')
 
