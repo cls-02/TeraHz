@@ -151,11 +151,11 @@ class LxMeter:
 
         if chB/chA <= 0.5 and chB/chA > 0:
             lux = (0.0304*chA) - (0.062*chA*((chB/chA)**1.4))
-        else if chB/chA <= 0.61 and chB/chA > 0.5:
+        elif chB/chA <= 0.61 and chB/chA > 0.5:
             lux = (0.0224*chA) - (0.031*chB)
-        else if chB/chA <=0.8 and chB/chA > 0.61:
+        elif chB/chA <=0.8 and chB/chA > 0.61:
             lux = (0.0128*chA) - (0.0153*chB)
-        else if chB/chA <=1.3 and chB/chA >0.8:
+        elif chB/chA <=1.3 and chB/chA >0.8:
             lux = (0.00146*chA) - (0.00112*chB)
         else:
             lux = 0
