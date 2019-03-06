@@ -5,24 +5,19 @@
 import file
 import json
 import pandas as pd
+from pathlib import Path
 
 class measurementStorage():
     def __init__(self, directory):
-        self.storageDirectory = directory
+        self.storagePath = Path(directory)
+        if not self.storagePath.exists():
+            raise Exception('Storage directory does not exist')
 
-    def storeJSON(self, JSON):
-        # JSON sanity check, shouldn't be needed, but just in case...
-        if 'metadata' not in JSON or 'timestamp' not in JSON['metadata']:
-            raise Exception('Invalid JSON passed to storage backend: no timestamp')
+    def storeTemp(self, jsonObject):
+        with self.storagepath / 'temp.thz' as tempfile:
+            json.dump(jsonObject, tempfile)
 
-        if 'spectral' not in JSON or [x for x in 'ABCDEFGHIJKLMNOPQR'] not in JSON['spectral']:
-            raise Exception('Invalid JSON passed to storage backend: no spectral data')
-
-        if 'uv' not in JSON or ['a', 'b', 'i'] not in JSON['uv']:
-            raise Exception('Invalid JSON passed to storage backend: no UVA/B/I data')
-
-        if 'lux' not in JSON:
-            raise Exception('Invalid JSON passed to storage backend: no illuminance data')
-
-        filename = JSON['metadata']['timestamp'] + '.thz'
-        with file.open()
+    def loadTemp(self):
+        with self.storagePath / 'temp.thz' as tempfile:
+            return json.load(tempfile)
+    
