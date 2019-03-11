@@ -20,4 +20,6 @@ class measurementStorage():
     def loadTemp(self):
         with self.storagePath / 'temp.thz' as tempfile:
             return json.load(tempfile)
-    
+
+    def tempToFile(self):
+        self
