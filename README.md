@@ -1,10 +1,17 @@
 # TeraHz
-TeraHz is a low-cost spectrometer based on a Raspberry Pi 3 or 3 B+ and 3 separate
-breakout boards connected to it.
+TeraHz is a low-cost spectrometer based on a Raspberry Pi 3 or 3 B+ and three sensors:
+ + [__AS7265x__](https://www.tindie.com/products/onehorse/compact-as7265x-spectrometer/)
+ is a 18 channel spectrometer chipset that provides the device with spectral data
+ + [__VEML6075__](https://www.sparkfun.com/products/15089) is an
+ UVA/UVB sensor
+ + [__APDS-9301__](https://www.sparkfun.com/products/14350) is a calibrated illuminance (lux) meter that provides the device with reliable readings
+
+## Why?
+Because people and institutions could use an affordable and accurate light-analysing device that is also portable, easy to use and simple to assemble. TeraHz was started as an answer to our high school not being able to afford a commercially available solution. One TeraHz spectrometer costs around 150$ in parts, which makes it a competitive alternative to other solutions on the market today.
 
 ## Development team
 Copyright 2018, 2019
 
-- Kristjan "d3m1g0d" Komloši (electronics engineer, middleware)
-- Juš "ANormalPerson" Dolžan (backend developer)
-- Jakob "D3m1j4ck" Kosec (frontend developer)
+- Kristjan "d3m1g0d" Komloši (electronics, middleware)
+- Juš "ANormalPerson" Dolžan (backend)
+- Jakob "D3m1j4ck" Kosec (frontend, website)
