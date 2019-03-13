@@ -2,24 +2,30 @@
 # Copyright Kristjan Komloši 2019
 # This code is licensed under the 3-clause BSD license
 
-import file
-import json
-import pandas as pd
-from pathlib import Path
 
-class measurementStorage():
-    def __init__(self, directory):
-        self.storagePath = Path(directory)
-        if not self.storagePath.exists():
-            raise Exception('Storage directory does not exist')
+import sqlite3
+class jsonStorage:
+    def __init__(self, dbFile):
+        '''Storage object constructor. Argument is filename'''
+        self.db = sqlite3.connect(dbFile)
 
-    def storeTemp(self, jsonObject):
-        with self.storagepath / 'temp.thz' as tempfile:
-            json.dump(jsonObject, tempfile)
+    def listJSONs(self):
+        c = self.db.cursor()
+        c.execute('SELECT * FROM storage')
+        result = c.fetchall()
+        c.close()
+        return result
 
-    def loadTemp(self):
-        with self.storagePath / 'temp.thz' as tempfile:
-            return json.load(tempfile)
+    def storeJSON(self, jsonString, comment):
+        c = self.db.cursor()
+        c.execute('INSERT INTO storage VALUES (datetime(\'now\', \'localtime\'), ?, ?)', (comment, jsonString))
+        c.close()
+        self.db.commit()
 
-    def tempToFile(self):
-        self
+    def retrieveJSON(self, timestamp):
+        '''Retrieves a JSON entry. Takes a timestamp string'''
+        c = self.db.cursor()
+        c.execute('SELECT * FROM storage WHERE timestamp = ?', (timestamp,))
+        result = c.fetchall()
+        c.close()
+        return result
