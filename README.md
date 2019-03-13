@@ -1,5 +1,6 @@
 # TeraHz
-TeraHz is a low-cost spectrometer.
+TeraHz is a low-cost spectrometer based on a Raspberry Pi 3 or 3 B+ and 3 separate
+breakout boards connected to it.
 
 ## Development team
 Copyright 2018, 2019
