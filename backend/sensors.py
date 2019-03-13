@@ -24,27 +24,26 @@ class Spectrometer:
         except:
             raise Exception('An exception ocurred when performing spectrometer handshake')
             ex(1)
-        self.setParameters()
 
-    def setParameters(self):
+    def setParameters(self, parameters):
         '''applies the parameters like LED light and gain to the spectrometer'''
         try:
-            if 'it_time' in self.parameters:
-                it_time = int(self.parameters['it_time'])
+            if 'it_time' in parameters:
+                it_time = int(parameters['it_time'])
                 if it_time <=0 :
                     it_time = 1
                 self.serialObject.write('ATINTTIME={}\n'.format(string(it_time)).encode())
                 self.serialObject.readline()
 
-            if 'gain' in self.parameters:
-                gain = int(self.parameters['gain'])
+            if 'gain' in parameters:
+                gain = int(parameters['gain'])
                 if gain < 0 or gain > 3:
                     gain = 1
                 self.serialObject.write('ATGAIN={}\n'.format(gain).encode())
                 self.serialObject.readline()
 
-            if 'led' in self.parameters:
-                led = bool(self.parameters['led'])
+            if 'led' in parameters:
+                led = bool(parameters['led'])
                 if led:
                     led=1
                 else:
@@ -55,7 +54,7 @@ class Spectrometer:
            raise Exception('An exception occured during spectrometer initialization')
            ex(1)
 
-    def refreshData(self):
+    def getData(self):
         try:
             self.serialObject.write(b'ATCDATA\n')
             rawresp = self.serialObject.readline().decode()
@@ -66,14 +65,13 @@ class Spectrometer:
             responseorder = [i for i in 'RSTUVWGHIJKLABCDEF']
             realorder = [i for i in 'ABCDEFGHRISJTUVWKL']
             response = pd.Series([float(i)/35.0 for i in rawresp[:-3].split(',')], index=responseorder)
-            self.data = pd.DataFrame(response, index=realorder, columns = ['uW/cm^2'])
+            return pd.DataFrame(response, index=realorder, columns = ['uW/cm^2'])
 
 
-    def __init__(self, path='/dev/ttyUSB0', baudrate=115200, tout=1, rrate=1, params={}):
+    def __init__(self, path='/dev/ttyUSB0', baudrate=115200, tout=1):
         self.path = path
         self.baudrate = baudrate
         self.timeout = 1
-        self.parameters = params
         try:
             self.serialObject = ser.Serial(path, baudrate, timeout=tout)
         except:
@@ -81,7 +79,6 @@ class Spectrometer:
             ex(1)
         else:
             self.initializeSensor()
-            self.startDataCollection()
 
 
 class LxMeter:
@@ -179,7 +176,7 @@ class UVSensor:
     def getABI(self):
         '''Calculates the UVA and UVB irradiances,
         along with UV index. Returns [a,b,i]'''
-        
+
         try:
             # read the raw UVA, UVB and compensation values from the sensor
             aRaw = self.bus.read_word_data(addr, 0x07)
