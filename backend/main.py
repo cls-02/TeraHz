@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for, request, render_template
 app = Flask(__Name__)
+URL = "" #Insert url of website here
 
 @app.route('/list')
 def list():
@@ -13,9 +14,12 @@ def load():
 def deposit():
    #Request .json, store json
    if request.isJson():
-      request.get_json()
+      content = request.get_json(url = URL)
+      return content
 
-
+@app.route('/post', , methods = ['POST']):
+def post():
+   request.post(url = URL, data = "") #Insert the data you wish to upload
 
 @app.route('/graph')
 def graph(chartID = 'chart_ID', chart_type = 'line', chart_height = 500):
