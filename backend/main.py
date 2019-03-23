@@ -13,7 +13,7 @@ def load():
 def deposit():
    #Request .json, store json
    if request.isJson():
-      request.json.
+      request.get_json()
 
 
 
