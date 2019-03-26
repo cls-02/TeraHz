@@ -73,7 +73,7 @@ class Spectrometer:
         self.baudrate = baudrate
         self.timeout = 1
         try:
-            self.serialObject = ser.Serial(path, baudrate, timeout=tout)
+            self.serialObject =
         except:
             raise Exception('An exception occured when opening the serial port at {}'.format(path))
             ex(1)
