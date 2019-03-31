@@ -198,7 +198,7 @@ class UVSensor:
         b = bCorr * 0.00125
 
         # last, calculate the UV index
-        i = (uva + uvb) / 2
+        i = (a + b) / 2
 
         return [a,b,i]
 
