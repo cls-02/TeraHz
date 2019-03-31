@@ -8,4 +8,4 @@ l=sensors.LxMeter()
 
 @app.route('/data')
 def sendData():
-    return json.dumps([s.getData(), l.getData(), u.getABI])
+    return json.dumps([s.getData(), l.getData(), u.getABI()])
