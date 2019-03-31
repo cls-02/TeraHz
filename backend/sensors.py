@@ -162,6 +162,7 @@ class LxMeter:
 
 class UVSensor:
     def __init__(self, bus=1, addr=0x10):
+        self.addr=addr
         try:
             self.bus = smbus2.SMBus(bus)
         except:
@@ -169,7 +170,7 @@ class UVSensor:
 
         try:
             # enable the sensor and set the integration time
-            self.bus.write_byte_data(addr, 0x00, 0b00010000)
+            self.bus.write_byte_data(self.addr, 0x00, 0b00010000)
         except:
             raise Exception('An exception occured when initalizing the UV Sensor')
 
@@ -179,10 +180,10 @@ class UVSensor:
 
         try:
             # read the raw UVA, UVB and compensation values from the sensor
-            aRaw = self.bus.read_word_data(addr, 0x07)
-            bRaw = self.bus.read_word_data(addr, 0x09)
-            c1 = self.bus.read_word_data(addr, 0x0a)
-            c2 = self.bus.read_word_data(addr, 0x0b)
+            aRaw = self.bus.read_word_data(self.addr, 0x07)
+            bRaw = self.bus.read_word_data(self.addr, 0x09)
+            c1 = self.bus.read_word_data(self.addr, 0x0a)
+            c2 = self.bus.read_word_data(self.addr, 0x0b)
         except:
             raise Exception('An exception occured when fetching raw UV data')
         # scary computations ahead! refer to Vishay app note 84339 and Sparkfun
@@ -215,7 +216,7 @@ class UVSensor:
         try:
             # write the default value for power on
             # no configurable params = no bitmask
-            self.bus.write_byte_data(addr, 0x00, 0x10)
+            self.bus.write_byte_data(self.addr, 0x00, 0x10)
         except:
             raise Exception('An exception occured when turning the UV sensor on')
 
@@ -224,6 +225,6 @@ class UVSensor:
         try:
             # write the default value + the shutdown bit
             # no configurable params = no bitmask
-            self.bus.write_byte_data(addr, 0x00, 0x11)
+            self.bus.write_byte_data(self.addr, 0x00, 0x11)
         except:
             raise Exception('An exception occured when shutting the UV sensor down')
