@@ -65,7 +65,7 @@ class Spectrometer:
             responseorder = [i for i in 'RSTUVWGHIJKLABCDEF']
             realorder = [i for i in 'ABCDEFGHRISJTUVWKL']
             response = pd.Series([float(i)/35.0 for i in rawresp[:-3].split(',')], index=responseorder)
-            return pd.DataFrame(response, index=realorder, columns = ['uW/cm^2'])
+            return pd.DataFrame(response, index=realorder, columns = ['uW/cm^2']).to_dict()['uW/cm^2']
 
 
     def __init__(self, path='/dev/ttyUSB0', baudrate=115200, tout=1):

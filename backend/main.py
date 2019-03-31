@@ -1,16 +1,9 @@
 from flask import Flask, redirect, url_for, request
-app = Flask(__Name__)
+import sensors
+import json
+app = Flask(__name__)
+s=sensors.Spectrometer(path='/dev/ttyACM0', baudrate=115200, tout=1)
 
-@app.route('/list')
-def list():
-   #Return list json
-
-@app.route('/load'):
-def load():
-   #Request args, load json
-
-@app.route('/deposit'):
-def deposit():
-   #Request .json, store json
-   if request.isJson():
-      request.json.
+@app.route('/data')
+def sendData():
+    return json.dumps(s.getData())
