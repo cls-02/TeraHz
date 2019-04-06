@@ -1,4 +1,5 @@
 from flask import Flask, redirect, url_for, request
+import flask
 import sensors
 import json
 app = Flask(__name__)
@@ -8,4 +9,6 @@ l=sensors.LxMeter()
 
 @app.route('/data')
 def sendData():
-    return json.dumps([s.getData(), l.getData(), u.getABI()])
+    response = flask.jsonify([s.getData(), l.getData(), u.getABI()])
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
