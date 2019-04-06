@@ -6,5 +6,5 @@ function updateData () {
     for (const i in data[0]) {
       $(i).text(data[0][i]);
     }
-  })
+  });
 }
