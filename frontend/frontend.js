@@ -4,7 +4,7 @@ function updateData () {
   $.get(url, function (data, status) {
     $('#debug').text(data);
     for (const i in data[0]) {
-      $(i).text(data[0][i]);
+      $('#'+i).text(data[0][i]);
     }
   });
 }
