@@ -1,8 +1,6 @@
 var globalObject;
 $('#update').click(function () {
   updateData();
-  fillTable(globalObject, $('table'));
-  graphSpectralData(globalObject, $('#spectrogram'));
 });
 // jQuery event binder
 
@@ -12,8 +10,11 @@ function updateData () {
   // I understand how bad this line looks. Please don't judge me...
   $.get(url, function (data, status) { // standard jQuery AJAX
     globalObject = data;
-    console.log(data);
-  });
+  })
+    .done(function () {
+      fillTable(globalObject, $('table'));
+      graphSpectralData(globalObject, $('#spectrogram'));
+    });
 }
 
 function fillTable (obj, dom) {
@@ -29,10 +30,10 @@ function graphSpectralData(obj, dom) {
   var chart = new Chart(dom, {
     type: 'line',
     data: {
-      labels: obj[0].keys(),
+      labels: Object.keys(obj[0]),
       datasets: [{
         label: 'Spectrometer data',
-        data: obj[0].values()
+        data: Object.values(obj[0])
       }]
     }
   });
