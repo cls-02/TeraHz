@@ -1,6 +1,6 @@
 var globalObject;
 $('#update').click(function () {
-  globalObject = updateData();
+  updateData();
   fillTable(globalObject, $('table'));
   graphSpectralData(globalObject, $('#spectrogram'));
 });
@@ -11,7 +11,8 @@ function updateData () {
   const url = 'http://' + window.location.hostname + ':5000/data';
   // I understand how bad this line looks. Please don't judge me...
   $.get(url, function (data, status) { // standard jQuery AJAX
-    return data;
+    globalObject = data;
+    console.log(data);
   });
 }
 
