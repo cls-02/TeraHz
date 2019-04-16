@@ -35,6 +35,9 @@ function graphSpectralData(obj, dom) {
         label: 'Spectrometer data',
         data: Object.values(obj[0])
       }]
+    },
+    options: {
+      responsive: false
     }
   });
 }
