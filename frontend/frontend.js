@@ -1,17 +1,17 @@
 var globalObject;
 $('#update').click(function () {
-  updateData(globalObject);
+  globalObject = updateData();
   fillTable(globalObject, $('table'));
   graphSpectralData(globalObject, $('#spectrogram'));
 });
 // jQuery event binder
 
-function updateData (obj) {
+function updateData () {
   // download data from backend into obj
   const url = 'http://' + window.location.hostname + ':5000/data';
   // I understand how bad this line looks. Please don't judge me...
   $.get(url, function (data, status) { // standard jQuery AJAX
-    obj = data;
+    return data;
   });
 }
 
