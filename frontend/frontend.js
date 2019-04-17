@@ -12,8 +12,9 @@ function updateData () {
     globalObject = data;
   })
     .done(function () {
-      fillTable(globalObject, $('table'));
+      fillTable(globalObject, $('#specter'));
       graphSpectralData(globalObject, $('#spectrogram'));
+      fillLuxUv(globalObject, $('#luxuv'));
     });
 }
 
