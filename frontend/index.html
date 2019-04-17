@@ -13,11 +13,12 @@
     <h1>TeraHz</h1>
   </div>
   <div class="container">
-    <h3>Vrednosti:</h3><br>
     <button id="update" class="btn btn-primary m-1 float-right">Get data</button>
     <p id="debug">
     </p>
+    <h3>Spectrogram</h3>
     <canvas id="spectrogram" width="640px" height="480"></canvas>
+    <h3>Spectral readings</h3>
     <table class="table table-sm">
       <thead class="thead-dark">
         <tr>
@@ -117,7 +118,29 @@
         <td id="L">---</td>
       </tr>
     </table>
-
+    <br>
+    <table class="table">
+      <th class="thead-dark">
+        <td>Parameter</td>
+        <td>Value</td>
+      </th>
+      <tr>
+        <td>Illuminance [lx]</td>
+        <td id="lx">---</td>
+      </tr>
+      <tr>
+        <td>UVA irradiance [μW/cm²]</td>
+        <td id="uva">---</td>
+      </tr>
+      <tr>
+        <td>UVB irradiance [μW/cm²]</td>
+        <td id="uvb">---</td>
+      </tr>
+      <tr>
+        <td>UVA/UVB average [μW/cm²]</td>
+        <td id="uvi">---</td>
+      </tr>
+    </table>
   </div>
   <script src="lib/bootstrap.bundle.min.js"></script>
   <script src="lib/jquery-3.3.1.min.js"></script>

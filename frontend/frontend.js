@@ -41,3 +41,10 @@ function graphSpectralData(obj, dom) {
     }
   });
 }
+
+function fillLuxUv (obj, dom) {
+  $(dom).find('#lx').text(obj[1]);
+  $(dom).find('#uva').text(obj[2][0]);
+  $(dom).find('#uvb').text(obj[2][0]);
+  $(dom).find('#uvi').text(obj[2][0]);
+}
