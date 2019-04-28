@@ -29,9 +29,9 @@ function fillTable (obj, dom) {
 function graphSpectralData (obj, dom) {
   // graphs the data from obj[0] into canvas at dom
   var arr = [];
-  for (var i in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'R', 'I', 'S', 'J', 'T', 'U', 'V', 'W', 'K', 'L']) {
+  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'R', 'I', 'S', 'J', 'T', 'U', 'V', 'W', 'K', 'L'].forEach(function () {
     arr.push(obj[i]);
-  }
+  });
   var chart = new Chart(dom, {
     type: 'line',
     data: {
