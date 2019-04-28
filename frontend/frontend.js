@@ -30,7 +30,7 @@ function graphSpectralData (obj, dom) {
   // graphs the data from obj[0] into canvas at dom
   var arr = [];
   ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'R', 'I', 'S', 'J', 'T', 'U', 'V', 'W', 'K', 'L'].forEach(function (i) {
-    arr.push(obj[i]);
+    arr.push(obj[0][i]);
   });
   var chart = new Chart(dom, {
     type: 'line',
