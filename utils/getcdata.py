@@ -1,5 +1,6 @@
 # getcdata.py - fetch the calibrated data from the AS7265x module
-# this program is 3-clause BSD license
+# All code in this file is licensed under the ISC license, provided in LICENSE.txt
+
 import serial as ser
 import pandas as pd
 import numpy as np

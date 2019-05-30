@@ -1,7 +1,6 @@
 # sensors.py - a module for interfacing to the sensors
 # Copyright 2019 Kristjan Komloši
-# The code in this file is licensed under the 3-clause BSD License
-
+# All code in this file is licensed under the ISC license, provided in LICENSE.txt
 import serial as ser
 import pandas as pd
 import smbus2

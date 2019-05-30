@@ -1,3 +1,4 @@
+// All code in this file is licensed under the ISC license, provided in LICENSE.txt
 var globalObject;
 $('#update').click(function () {
   updateData();

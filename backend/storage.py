@@ -1,6 +1,6 @@
 # storage.py - storage backend for TeraHz
 # Copyright Kristjan Komloši 2019
-# This code is licensed under the 3-clause BSD license
+# All code in this file is licensed under the ISC license, provided in LICENSE.txt
 
 
 import sqlite3

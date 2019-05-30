@@ -1,5 +1,5 @@
-#main.py - the main program file of the TeraHz project
-#This code is licensed under 3-clause BSD licensed
+# main.py - the main program file of the TeraHz project
+# All code in this file is licensed under the ISC license, provided in LICENSE.txt
 import serial as ser
 
 #global config

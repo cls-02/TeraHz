@@ -1,3 +1,4 @@
+# All code in this file is licensed under the ISC license, provided in LICENSE.txt
 from flask import Flask, redirect, url_for, request
 import flask
 import sensors
