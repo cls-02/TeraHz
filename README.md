@@ -12,6 +12,9 @@ Because people and institutions could use an affordable and accurate light-analy
 ## Development team
 Copyright 2018, 2019
 
-- Kristjan "d3m1g0d" Komloši (electronics, sensor drivers, backend)
-- Juš "ANormalPerson" Dolžan (backend)
+- Kristjan "cls-02" Komloši (electronics, sensor drivers, backend)
 - Jakob "D3m1j4ck" Kosec (frontend)
+
+
+I would also like to thank Juš "ANormalPerson" Dolžan, who decided to leave the
+team, but helped me a lot with backend development.
