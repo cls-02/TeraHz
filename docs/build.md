@@ -9,6 +9,7 @@ With this warning out of the way, let's begin.
 
 ## Getting the latest sources
 The most reliable way to get working source code is by cloning the official
+<<<<<<< HEAD
 GitHub repository and checking out the `development-stable` tag. This tag marks
 the latest confirmed working commit. Building from the master branch is somewhat
 risky, and building from development branches is straight up stupid if you're
@@ -16,6 +17,12 @@ not a developer.
 
 Make sure that the repository is cloned into `/home/pi/TeraHz`, as Lighttpd
 expects to find frontend files inside this directory.
+=======
+GitHub repository and checking out the `development-working` tag. This tag marks
+the latest confirmed working commit. Building from the master branch is somewhat
+risky, and building from development branches is straight up stupid if you're
+not a developer.
+>>>>>>> 879cb28b9eba1b0ecaa60a43a0ec53070ea8f1e6
 
 After cloning and checking out, check the documentation for module dependencies
 and the required version of python in the `docs/dependencies.md` file.
@@ -27,6 +34,7 @@ you'll know that the latest version of Python available is `3.5`, which is too
 obsolete to run TeraHz and the required modules consistently. This leaves us
 with compiling Python from source. __This step is guaranteed to be slow,
 overnight compiling with something like tmux is recommended.__
+<<<<<<< HEAD
 
 ### Pre-requirements
 Installing python without most C libraries will lead to a rather minimalistic
@@ -117,3 +125,65 @@ apt install hostapd dnsmasq hostapd
 ## Copying configuration files
 To simplify the process of configuring Raspbian to run TeraHz, sample
 configuration file are provided
+=======
+
+### Pre-requirements
+Installing python without most C libraries will lead to a rather minimalistic
+Python install, missing a lot of important modules. To prevent this, update
+the system packages. After that, reboot.
+
+```
+sudo apt update
+sudo apt full-upgrade
+sudo reboot
+```
+
+Install the required build tools, libraries and their headers.
+
+```
+sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+```
+
+### Compiling
+Compiling Python from source is, in fact pretty easy, just time-consuming. I'll
+advise you again to use a terminal multiplexer like `tmux` to start the build
+process, detach the terminal session overnight and reattach it some time later
+to check on it.
+
+Python 3.6.8 can be downloaded in many forms, but you'll be using the most basic
+of them all: a gzipped tarball. Download and decompress it, the cd into its
+directory.
+
+```
+wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz
+tar -xzf Python-3.6.8.tgz
+cd Python-3.6.8
+```
+
+Python's build process is pretty classic, a `.configure` script and a Makefile.
+Using the `-j` option with Make can reduce the compile time significantly. Go
+with as many threads as you have cores: `-j 4` works great on the Pi 3 B/B+.
+
+```
+./configure
+make -j4
+```
+
+When the compilation ends, install your freshly built version of python.
+
+```
+sudo make altinstall
+```
+
+Altinstall means that the new version of Python will be installed beside the
+existing version, and all related commands will use the full naming scheme:
+think `python3.6` or `pip3.6` instead of the shorter `python3` or `pip3`.
+
+### Modules
+Another painfully slow part is the installation of all the required modules needed
+by TeraHz. Luckily, `pip3.6` takes care of the entire installation process. You might also want to run this command through a terminal multiplexer overnight, as it takes a few hours to complete.
+
+```
+pip3.6 install smbus pyserial flask pandas
+```
+>>>>>>> 879cb28b9eba1b0ecaa60a43a0ec53070ea8f1e6
