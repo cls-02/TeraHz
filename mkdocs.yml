@@ -1,5 +1,5 @@
 site_name: TeraHz Documentation
-site_dir: site
+theme: readthedocs
 nav:
   - Build guide: 'build.md'
   - Development-stable dependencies: 'dependencies.md'
