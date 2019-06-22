@@ -1,1 +1,4 @@
-site_name: My Docs
+nav:
+  - Build guide: 'build.md'
+  - Development-stable dependencies: 'dependencies.md'
+  - Start page: 'index.md'
