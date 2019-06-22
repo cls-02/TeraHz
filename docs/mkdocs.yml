@@ -1,3 +1,4 @@
+site_name: TeraHz Documentation
 nav:
   - Build guide: 'build.md'
   - Development-stable dependencies: 'dependencies.md'
