@@ -1,4 +1,4 @@
-# TeraHz build guide
+## Warning
 The recommended way of getting TeraHz is the official Raspberry Pi SD card image
 provided under the releases tab in the GitHub repository. Installing TeraHz from
 source is a time consuming and painful process, even more so if you don't know
@@ -109,7 +109,7 @@ to run:
   - Hostapd - Wi-Fi access point
 
 They are available from the Raspbian repository. Install it via `apt`.
-  
+
 ```
 apt install hostapd dnsmasq hostapd
 ```
