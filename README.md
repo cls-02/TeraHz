@@ -1,4 +1,8 @@
 # TeraHz
+
+
+[![Documentation Status](https://readthedocs.org/projects/terahz/badge/?version=latest)](https://terahz.readthedocs.io/en/latest/?badge=latest)
+
 TeraHz is a low-cost spectrometer based on a Raspberry Pi 3 or 3 B+ and three sensors:
  + [__AS7265x__](https://www.tindie.com/products/onehorse/compact-as7265x-spectrometer/)
  is a 18 channel spectrometer chipset that provides the device with spectral data
