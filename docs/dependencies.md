@@ -1,7 +1,9 @@
 The current development version of TeraHz has been verified to work with:
+
   - Raspbian Stretch (9)
   - Python 3.6.8 (built from source code and altinstall'd)
   - Module versions (direct `pip3.6 list` output):
+
   ```
     Package         Version  
     --------------- ---------
