@@ -1,1 +1,6 @@
-site_name: My Docs
+site_name: TeraHz Documentation
+site_dir: ../site
+nav:
+  - Build guide: 'build.md'
+  - Development-stable dependencies: 'dependencies.md'
+  - Start page: 'index.md'
