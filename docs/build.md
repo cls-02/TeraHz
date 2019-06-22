@@ -14,6 +14,9 @@ the latest confirmed working commit. Building from the master branch is somewhat
 risky, and building from development branches is straight up stupid if you're
 not a developer.
 
+Make sure that the repository is cloned into `/home/pi/TeraHz`, as Lighttpd
+expects to find frontend files inside this directory.
+
 After cloning and checking out, check the documentation for module dependencies
 and the required version of python in the `docs/dependencies.md` file.
 
@@ -39,17 +42,17 @@ sudo reboot
 Install the required build tools, libraries and their headers.
 
 ```
-sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+sudo apt-get install build-essential tk-dev libncurses5-dev libncursesw5-dev \
+libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev \
+libexpat1-dev liblzma-dev zlib1g-dev
 ```
 
 ### Compiling
-Compiling Python from source is, in fact pretty easy, just time-consuming. I'll
-advise you again to use a terminal multiplexer like `tmux` to start the build
-process, detach the terminal session overnight and reattach it some time later
-to check on it.
+Compiling Python from source is, in fact pretty easy, just time-consuming. To combat
+that, using tmux to detach and later reattach the session is advised.
 
-Python 3.6.8 can be downloaded in many forms, but you'll be using the most basic
-of them all: a gzipped tarball. Download and decompress it, the cd into its
+Python is packaged in many forms, but you'll be using the most basic
+of them all: a gzipped tarball. Download and decompress it, then cd into its
 directory.
 
 ```
@@ -73,14 +76,44 @@ When the compilation ends, install your freshly built version of python.
 sudo make altinstall
 ```
 
-Altinstall means that the new version of Python will be installed beside the
+"Altinstall" means that the new version of Python will be installed beside the
 existing version, and all related commands will use the full naming scheme:
 think `python3.6` or `pip3.6` instead of the shorter `python3` or `pip3`.
 
 ### Modules
-Another painfully slow part is the installation of all the required modules needed
-by TeraHz. Luckily, `pip3.6` takes care of the entire installation process. You might also want to run this command through a terminal multiplexer overnight, as it takes a few hours to complete.
+Another painfully slow part is the installation of all the required modules
+needed by TeraHz. Luckily, `pip3.6` takes care of the entire installation
+process. As before, using tmux is advised.
 
 ```
 pip3.6 install smbus pyserial flask pandas
 ```
+
+## Raspi-config
+For some law-obeying reason, Raspbian locks down the Wi-Fi interface card until
+the Wi-Fi country is set. This means that we will need to set it manually through
+the `raspi-config` program. It requires superuser privileges.
+
+```
+sudo raspi-config
+```
+
+_TODO: add images and setup walkthrough - Wi-Fi country, Partition expand, SMBus
+enable, etc._
+
+## Installing packages
+In addition to what's already installed, TeraHz requires the following daemons
+to run:
+  - Lighttpd - Frontend HTTP server
+  - Dnsmasq - DNS and DHCP server, used to redirect the `terahz.site` domain
+  - Hostapd - Wi-Fi access point
+
+They are available from the Raspbian repository. Install it via `apt`.
+
+```
+apt install hostapd dnsmasq hostapd
+```
+
+## Copying configuration files
+To simplify the process of configuring Raspbian to run TeraHz, sample
+configuration file are provided

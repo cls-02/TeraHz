@@ -1,0 +1,3 @@
+nav:
+  - Build guide: 'build.md'
+  - Development-stable dependencies: 'dependencies.md'
