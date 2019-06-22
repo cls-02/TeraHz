@@ -1,2 +1,2 @@
-# TeraHz
-TeraHz is a low-cost spectrometer.
+# Start page
+This is the start page for the TeraHz documentation.
