@@ -97,9 +97,36 @@ the `raspi-config` program. It requires superuser privileges.
 ```
 sudo raspi-config
 ```
+![1](imgs/raspi-config/1.png)
 
-_TODO: add images and setup walkthrough - Wi-Fi country, Partition expand, SMBus
-enable, etc._
+Configure the network hostname to something specific. If setting up multiple
+TeraHz machines, make their hostnames unique so you can tell them apart.
+
+![](imgs/raspi-config/3.png)
+![](imgs/raspi-config/4.png)
+
+Enable SSH and I2C interfaces.
+![](imgs/raspi-config/15.png)
+![](imgs/raspi-config/5.png)
+![](imgs/raspi-config/6.png)
+![](imgs/raspi-config/7.png)
+![](imgs/raspi-config/19.png)
+
+Expand the root filesystem along the entire SD card.
+
+![](imgs/raspi-config/17.png)
+![](imgs/raspi-config/8.png)
+![](imgs/raspi-config/9.png)
+
+Set the Wi-Fi country to the country you'll be using TeraHz in.
+
+![](imgs/raspi-config/10.png)
+![](imgs/raspi-config/11.png)
+![](imgs/raspi-config/12.png)
+![](imgs/raspi-config/13.png)
+![](imgs/raspi-config/14.png)
+
+Save and reboot to enable Wi-Fi
 
 ## Installing packages
 In addition to what's already installed, TeraHz requires the following daemons
@@ -114,6 +141,25 @@ They are available from the Raspbian repository. Install it via `apt`.
 apt install hostapd dnsmasq hostapd
 ```
 
+## Configuring daemons
+By default, the daemons we installed are disabled and start only manually. To
+change that, enable them through systemctl. Hostapd conflicts with
+wpa_supplicant, the solution is to disable wpa_supplicant (this will break your
+wireless connections, so use wired ethernet).
+
+```
+sudo systemctl unmask hostapd
+sudo systemctl stop wpa_supplicant
+sudo systemctl disable wpa_supplicant
+sudo systemctl enable dnsmasq hostapd lighttpd
+```
+
 ## Copying configuration files
 To simplify the process of configuring Raspbian to run TeraHz, sample
-configuration file are provided
+configuration file are provided in the `etcs` subdirectory of the Git
+repository.
+
+These files have been verified to work, but it's not a brilliant idea to just
+copy them into your `/etc` directory. Use them carefully and more as a template
+for your own configuration rather than as a _de facto_ way of configuring
+TeraHz.
