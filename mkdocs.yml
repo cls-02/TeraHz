@@ -1,6 +1,6 @@
 site_name: TeraHz Documentation
 theme: readthedocs
 nav:
-  - Start page: 'index.md'
-  - Build guide: 'build.md'
-  - Development-stable dependencies: 'dependencies.md'
+  - 'index.md'
+  - 'build.md'
+  - 'dependencies.md'

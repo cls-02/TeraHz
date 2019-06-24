@@ -1,3 +1,7 @@
+# TeraHz build guide
+This document describes the process of building/installing TeraHz from the Git
+repository.
+
 ## Warning
 The recommended way of getting TeraHz is the official Raspberry Pi SD card image
 provided under the releases tab in the GitHub repository. Installing TeraHz from

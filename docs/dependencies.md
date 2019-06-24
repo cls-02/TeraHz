@@ -1,3 +1,4 @@
+# Development-stable dependencies
 The current development version of TeraHz has been verified to work with:
 
   - Raspbian Stretch (9)
