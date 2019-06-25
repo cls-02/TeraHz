@@ -21,8 +21,13 @@ project when basic testing will be done.
 
 GPIO can be routed to the PCB with a standard old IDE disk cable, and terminated
 with another 40-pin connector at the PCB. Sensor breakouts should be mounted
+<<<<<<< HEAD
 through standard 0.1" connectors, male on the sensor breakout and female on the
 PCB. A shitty add-on header and a shitty add-on header v1.69bis can't hurt, either.
+=======
+through standard 0.1" connectors, male on the sensor brakout and female on the
+PCB. A shitty addon header and a shitty addon header v1.69bis can't hurt, either.
+>>>>>>> fd1f07d40dace3e003e49377d4771de53f8bdeb8
 
 ## SMBus sensors
 SMBus is a well-defined version of the well-known I2C bus, widely used
@@ -34,7 +39,11 @@ Pins are familiarly marked as SDA and SCL, the same as with classic I2C. They
 connect to the SDA and SCL pins on the VEML6075 and APDS-9301 sensor.
 
 ## UART sensor
+<<<<<<< HEAD
 Spectral sensor attaches through the UART port on the Raspberry pi (see picture).
+=======
+Spectrometry sensor attaches through the UART port on the Raspberry pi (see picture).
+>>>>>>> fd1f07d40dace3e003e49377d4771de53f8bdeb8
 
 The Tx and Rx lines must cross over, connecting the sensor's Tx line to the
 computer's Rx line and vice versa.
