@@ -2,8 +2,8 @@ site_name: TeraHz Documentation
 theme: readthedocs
 nav:
 - Start page: 'index.md'
-- Building manually:
-  - Build guide: 'build.md'
-  - Latest dependencies: 'dependencies.md'
 - Expert's guide:
+  - Build guide: 'build.md'
+  - Developer's guide: 'dev-guide.md'
   - Electrical connections: 'electrical.md'
+  - Latest dependencies: 'dependencies.md'
