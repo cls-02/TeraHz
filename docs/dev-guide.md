@@ -49,6 +49,7 @@ values, ending with a newline. The order is alphabetical, which is __different
 from wavelength order__. See the datasheet for more information.
 
 ## VEML6075
+_[Datasheet][2ds] [Buy breakout board][2]_
 
 This chip communicates through I2C and provides TeraHz with UVA and UVB
 irradiance readings. It's not an ideal chip for this task, as it's been marked
@@ -70,7 +71,7 @@ derived, and even Vishay's tech support doesn't know how exactly to calculate
 the irradiance.
 
 ## APDS-9301
-
+_[Datasheet][3ds] [Buy breakout board][3]_
 This chip measures illuminance in luxes and like the VEML6075, connects through
 I2C. Unlike the VEML6075, this chip is very good at its job, providing accurate
 and fast results without undefined mathematics or required calibration.
@@ -80,7 +81,9 @@ as the formula for Lux calculation is only defined for that setting. This
 initialization is handled by the sensors module.
 
 The lux reading is derived from two channels, descriptively called CH0 and CH1,
-residing in respective 16-bit registers at addresses `0xAC` and `0xAE`.
+residing in respective 16-bit registers at addresses `0xAC` and `0xAE`. After a
+successful read of both data registers, the lux value can be derived using the
+formula in the sensor's datasheet.
 
 
 
@@ -88,3 +91,5 @@ residing in respective 16-bit registers at addresses `0xAC` and `0xAE`.
 [2]: https://www.sparkfun.com/products/15089
 [3]: https://www.sparkfun.com/products/14350
 [1ds]: sensor-docs/AS7265x.pdf
+[2ds]: sensor-docs/veml6075.pdf
+[3ds]: sensor-docs/APDS-9301.pdf
