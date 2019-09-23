@@ -1,6 +1,5 @@
 # TeraHz
 
-
 [![Documentation Status](https://readthedocs.org/projects/terahz/badge/?version=latest)](https://terahz.readthedocs.io/en/latest/?badge=latest)
 
 TeraHz is a low-cost spectrometer based on a Raspberry Pi 3 or 3 B+ and three sensors:
