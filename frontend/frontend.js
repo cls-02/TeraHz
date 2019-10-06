@@ -50,6 +50,11 @@ function graphSpectralData (obj, dom) {
         labels: {
           fontColor: '#fff'
         }
+      },
+      scales: {
+        gridLines: {
+          color: 'rgba(255,255,255,0.3)'
+        }
       }
     }
   });
