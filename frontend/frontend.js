@@ -48,7 +48,11 @@ function graphSpectralData (obj, dom) {
       responsive: false,
       legend: {
         labels: {
+<<<<<<< HEAD
           fontColor: '#ffffff'
+=======
+          fontcolor: '#ffffff'
+>>>>>>> e21efc1b4a57fb153e2bbc832e44354dd9aa5d31
         }
       }
     }
