@@ -45,7 +45,12 @@ function graphSpectralData (obj, dom) {
       }]
     },
     options: {
-      responsive: false
+      responsive: false,
+      legend: {
+        labels: {
+          fontColor: '#ffffff'
+        }
+      }
     }
   });
 }
