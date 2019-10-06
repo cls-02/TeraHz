@@ -40,6 +40,7 @@ function graphSpectralData (obj, dom) {
       datasets: [{
         label: 'Spectrometer data',
         backgroundColor: 'rgba(1, 1, 1, 0.5)',
+        borderColor: 'rgba(1, 1, 1, 0.5)',
         data: arr
       }]
     },
