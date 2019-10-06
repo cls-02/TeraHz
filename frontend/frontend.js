@@ -39,8 +39,8 @@ function graphSpectralData (obj, dom) {
       labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'R', 'I', 'S', 'J', 'T', 'U', 'V', 'W', 'K', 'L'],
       datasets: [{
         label: 'Spectrometer data',
-        backgroundColor: 'rgba(1, 1, 1, 0.5)',
-        borderColor: 'rgba(1, 1, 1, 0.5)',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        borderColor: 'rgba(255, 255, 255, 0.5)',
         data: arr
       }]
     },
