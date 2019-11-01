@@ -25,10 +25,10 @@ function graphSpectralData (obj, dom) {
   const options = {
     grid: {
       color: 'white'
-    }
+    },
     xaxis: {
       color: 'white'
-    }
+    },
     yaxis: {
       color: 'white'
     }
