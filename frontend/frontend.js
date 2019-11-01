@@ -14,6 +14,7 @@ function updateData () {
   })
 }
 
+
 function graphSpectralData (obj, dom) {
   // graph spectral data in obj into dom
   var graphPoints = [];
@@ -21,6 +22,11 @@ function graphSpectralData (obj, dom) {
     graphPoints.push([index, obj[element]]);
   });
   console.log(graphPoints);
+  const options = {
+    grid: {
+      color: 'white'
+    }
+  }
   $.plot('#graph', [graphPoints]);
   // flot expects an array of arrays (lines) of 2-element arrays (points)
 }
