@@ -26,6 +26,12 @@ function graphSpectralData (obj, dom) {
     grid: {
       color: 'white'
     }
+    xaxis: {
+      color: 'white'
+    }
+    yaxis: {
+      color: 'white'
+    }
   }
   $.plot('#graph', [graphPoints], options);
   // flot expects an array of arrays (lines) of 2-element arrays (points)
