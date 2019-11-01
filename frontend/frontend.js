@@ -13,8 +13,9 @@ function updateData () {
     timeout: 2500 // this should be a pretty sane timeout
   }).done(
     document.write(globalObject)
-  ) // INSERT THE DATA HANDLER HERE!!!
+  ); // INSERT THE DATA HANDLER HERE!!!
 }
+
 function fillTable (obj, dom) {
   // applies data in obj[0] to HTML tags with the obj's key as ID.
   // useful mostly for slapping spectrometer JSON into HTML tables.
