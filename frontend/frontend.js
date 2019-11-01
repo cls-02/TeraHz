@@ -21,7 +21,8 @@ function graphSpectralData (obj, dom) {
     graphPoints.push([index, obj[element]]);
   });
   console.log(graphPoints);
-  $.plot("#graph", graphPoints);
+  $.plot('#graph', [graphPoints]);
+  // flot expects an array of arrays (lines) of 2-element arrays (points)
 }
 
 function fillLuxUv (obj, dom) {
