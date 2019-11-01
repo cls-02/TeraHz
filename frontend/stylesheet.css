@@ -59,6 +59,11 @@ body {
   background-color: #8d0000;
   color: white;
 }
+
 .table-secondary {
   color: black;
+}
+
+.flot-tick-label {
+  color: white;
 }
