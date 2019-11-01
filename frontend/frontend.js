@@ -23,6 +23,7 @@ function graphSpectralData (obj, dom) {
   });
   console.log(graphPoints);
   const options = {
+    color: 'white',
     grid: {
       color: 'white'
     },
