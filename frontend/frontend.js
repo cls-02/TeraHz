@@ -6,17 +6,16 @@ $('#update').click(function () {
 // jQuery event binder
 
 function updateData () {
-  // download data from backend into obj
   const url = 'http://' + window.location.hostname + ':5000/data';
-  // I understand how bad this line looks. Please don't judge me...
-  $.get(url, function (data, status) { // standard jQuery AJAX
-    globalObject = data;
-  })
-    .done(function () {
-      fillTable(globalObject, $('#specter'));
-      graphSpectralData(globalObject, $('#spectrogram'));
-      fillLuxUv(globalObject, $('#luxuv'));
-    });
+  $.ajax({ // spawn an AJAX request
+    url: url,
+    success: function (data, status) { globalObject = data; },
+    timeout: 2500 // this should be a pretty sane timeout
+  }).done(function () {
+    fillTable(globalObject, $('#specter'));
+    graphSpectralData(globalObject, $('#spectrogram'));
+    fillLuxUv(globalObject, $('#luxuv'));
+  });
 }
 
 function fillTable (obj, dom) {
