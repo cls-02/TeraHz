@@ -12,7 +12,7 @@ function updateData () {
     success: function (data, status) { globalObject = data; },
     timeout: 2500 // this should be a pretty sane timeout
   }).done(
-    document.write(globalObject)
+    console.log(globalObject)
   ); // INSERT THE DATA HANDLER HERE!!!
 }
 
