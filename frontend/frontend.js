@@ -18,7 +18,7 @@ function graphSpectralData (obj, dom) {
   // graph spectral data in obj into dom
   var graphPoints = [];
   Object.keys(obj).forEach((element) => {
-    graphPoints.append([element, obj[element]]);
+    graphPoints.push([element, obj[element]]);
   });
   console.log(graphPoints);
 }
