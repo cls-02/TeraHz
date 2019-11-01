@@ -11,12 +11,9 @@ function updateData () {
     url: url,
     success: function (data, status) { globalObject = data; },
     timeout: 2500 // this should be a pretty sane timeout
-  }).done(function () {
-    fillTable(globalObject, $('#specter'));
-    graphSpectralData(globalObject, $('#spectrogram'));
-    fillLuxUv(globalObject, $('#luxuv'));
-  });
-}
+  }).done(
+    document.write(globalObject)
+  ) // INSERT THE DATA HANDLER HERE!!!
 
 function fillTable (obj, dom) {
   // applies data in obj[0] to HTML tags with the obj's key as ID.
@@ -31,32 +28,7 @@ function graphSpectralData (obj, dom) {
   var arr = [];
   ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'R', 'I', 'S', 'J', 'T', 'U', 'V', 'W', 'K', 'L'].forEach(function (i) {
     arr.push(obj[0][i]);
-  });
-  var chart = new Chart(dom, {
-    type: 'line',
-    data: {
-      labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'R', 'I', 'S', 'J', 'T', 'U', 'V', 'W', 'K', 'L'],
-      datasets: [{
-        label: 'Spectrometer data',
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        borderColor: 'rgba(255, 255, 255, 0.5)',
-        data: arr
-      }]
-    },
-    options: {
-      responsive: false,
-      legend: {
-        labels: {
-          fontColor: '#fff'
-        }
-      },
-      scales: {
-        gridLines: {
-          color: 'rgba(255,255,255,0.3)'
-        }
-      }
-    }
-  });
+  })
 }
 
 function fillLuxUv (obj, dom) {
