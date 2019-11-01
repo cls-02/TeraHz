@@ -9,11 +9,9 @@ function updateData () {
   const url = 'http://' + window.location.hostname + ':5000/data';
   $.ajax({ // spawn an AJAX request
     url: url,
-    success: function (data, status) { globalObject = data; },
+    success: function (data, status) { globalObject = data; console.log(data); },
     timeout: 2500 // this should be a pretty sane timeout
-  }).done(
-    console.log(globalObject)
-  ); // INSERT THE DATA HANDLER HERE!!!
+  })
 }
 
 function fillTable (obj, dom) {
