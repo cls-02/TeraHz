@@ -28,10 +28,10 @@ function graphSpectralData (obj, dom) {
       color: 'white'
     },
     xaxis: {
-      color: 'white'
+      color: 'green'
     },
     yaxis: {
-      color: 'white'
+      color: 'blue'
     }
   }
   $.plot('#graph', [graphPoints], options);
