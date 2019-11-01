@@ -27,7 +27,7 @@ function graphSpectralData (obj, dom) {
       color: 'white'
     }
   }
-  $.plot('#graph', [graphPoints]);
+  $.plot('#graph', [graphPoints], options);
   // flot expects an array of arrays (lines) of 2-element arrays (points)
 }
 
