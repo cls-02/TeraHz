@@ -13,8 +13,12 @@ function updateData () {
     timeout: 2500 // this should be a pretty sane timeout
   }).done(
     document.write(globalObject)
+<<<<<<< HEAD
   ); // INSERT THE DATA HANDLER HERE!!!
 }
+=======
+  ) // INSERT THE DATA HANDLER HERE!!!
+>>>>>>> e4522f11b76f89c9bb6ef2c93f09b17877b11b9c
 
 function fillTable (obj, dom) {
   // applies data in obj[0] to HTML tags with the obj's key as ID.
