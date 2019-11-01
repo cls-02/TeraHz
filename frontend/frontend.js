@@ -21,6 +21,7 @@ function graphSpectralData (obj, dom) {
     graphPoints.push([index, obj[element]]);
   });
   console.log(graphPoints);
+  $.plot("#graph", graphPoints);
 }
 
 function fillLuxUv (obj, dom) {
