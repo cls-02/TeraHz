@@ -9,25 +9,18 @@ function updateData () {
   const url = 'http://' + window.location.hostname + ':5000/data';
   $.ajax({ // spawn an AJAX request
     url: url,
-    success: function (data, status) { globalObject = data; console.log(data); },
+    success: function (data, status) { globalObject = data; console.log(data); graphSpectralData(globalObject[0], 0); },
     timeout: 2500 // this should be a pretty sane timeout
   })
 }
 
-function fillTable (obj, dom) {
-  // applies data in obj[0] to HTML tags with the obj's key as ID.
-  // useful mostly for slapping spectrometer JSON into HTML tables.
-  for (var i in obj[0]) {
-    $(dom).find('#' + i).text(obj[0][i]);
-  }
-}
-
 function graphSpectralData (obj, dom) {
-  // graphs the data from obj[0] into canvas at dom
-  var arr = [];
-  ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'R', 'I', 'S', 'J', 'T', 'U', 'V', 'W', 'K', 'L'].forEach(function (i) {
-    arr.push(obj[0][i]);
-  })
+  // graph spectral data in obj into dom
+  var graphPoints = [];
+  obj.keys().forEach((element) => {
+    graphPoints.append([element, obj[element]]);
+  });
+  console.log(graphPoints);
 }
 
 function fillLuxUv (obj, dom) {
