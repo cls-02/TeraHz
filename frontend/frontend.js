@@ -20,21 +20,17 @@ function updateData () {
 function graphSpectralData (obj, dom) {
   // graph spectral data in obj into dom
   var graphPoints = [];
+  var graphXTicks = [];
+
   Object.keys(obj).forEach((element, index) => {
     graphPoints.push([index, obj[element]]);
+    graphXTicks.push([index, element]);
   });
+
   console.log(graphPoints);
   const options = {
-    color: 'white',
-    grid: {
-      color: 'white'
-    },
-    xaxis: {
-      color: 'green'
-    },
-    yaxis: {
-      color: 'blue'
-    }
+    grid: {color: 'white'},
+    xaxis: {ticks: graphXTicks}
   };
   $.plot('#graph', [graphPoints], options);
   // flot expects an array of arrays (lines) of 2-element arrays (points)
