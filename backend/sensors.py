@@ -206,14 +206,19 @@ class UVSensor:
         # scary computations ahead! refer to Vishay app note 84339 and Sparkfun
         # VEML6075 documentation.
 
-        # first, compensate for visible and IR noise
+        # compensate for visible and IR noise
         aCorr = aRaw - 2.22 * c1 - 1.33 * c2
         bCorr = bRaw - 2.95 * c1 - 1.74 * c2
 
-        # second, convert values into irradiances
-        a = aCorr * 0.00110
-        b = bCorr * 0.00125
+        # convert values into irradiances
+        a = aCorr * 1.06
+        b = bCorr * 0.48
 
+        # zero out negative results (readings with no uv)
+        if a < 0:
+            a = 0
+        if b < 0:
+            b = 0
         # last, calculate the UV index
         i = (a + b) / 2
 
