@@ -1,5 +1,4 @@
 // All code in this file is licensed under the ISC license, provided in LICENSE.txt
-var globalObject;
 $('#update').click(function () {
   updateData();
 });
@@ -9,11 +8,14 @@ function updateData () {
   const url = 'http://' + window.location.hostname + ':5000/data';
   $.ajax({ // spawn an AJAX request
     url: url,
-    success: function (data, status) { globalObject = data; console.log(data); graphSpectralData(globalObject[0], 0); },
+    success: function (data, status) {
+      console.log(data);
+      graphSpectralData(data[0], 0);
+      fillTableData(data);
+    },
     timeout: 2500 // this should be a pretty sane timeout
-  })
+  });
 }
-
 
 function graphSpectralData (obj, dom) {
   // graph spectral data in obj into dom
@@ -33,14 +35,17 @@ function graphSpectralData (obj, dom) {
     yaxis: {
       color: 'blue'
     }
-  }
+  };
   $.plot('#graph', [graphPoints], options);
   // flot expects an array of arrays (lines) of 2-element arrays (points)
 }
 
-function fillLuxUv (obj, dom) {
-  $(dom).find('#lx').text(obj[1]);
-  $(dom).find('#uva').text(obj[2][0]);
-  $(dom).find('#uvb').text(obj[2][1]);
-  $(dom).find('#uvi').text(obj[2][2]);
+function fillTableData (obj) {
+  // fill the obj data into HTML tables
+  Object.keys(obj[0])
+    .forEach((element) => { $('#' + element).text(obj[0][element]); });
+  $('#lx').text(obj[1]);
+  $('#uva').text(obj[2][0]);
+  $('#uvb').text(obj[2][1]);
+  $('#uvi').text(obj[2][2]);
 }
