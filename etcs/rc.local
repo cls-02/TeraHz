@@ -10,10 +10,5 @@
 # bits.
 #
 # By default this script does nothing.
-
-# Print the IP address
-
-cd /home/pi/TeraHz/backend
-service lighttpd start
-flask run -h 0.0.0.0 &
-exit 0
+/usr/local/lib/terahz/run.sh &
+disown
