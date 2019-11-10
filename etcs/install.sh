@@ -9,9 +9,9 @@ cp -R lighttpd/ /etc
 cp dnsmasq.conf /etc
 cp rc.local /etc
 cp -R ../frontend /var/www/html
-mkdir -p /usr/local/lib/TeraHz
+mkdir -p /usr/local/lib/terahz
 cp -R ../backend/* /usr/local/lib/terahz
-cd /etc/lighttpd
+cd /etc/hostapd
 chmod +x edit_ssid.sh
 ./edit_ssid.sh
 
