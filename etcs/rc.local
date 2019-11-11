@@ -10,5 +10,5 @@
 # bits.
 #
 # By default this script does nothing.
+/etc/hostapd/edit_ssid.sh &
 /usr/local/lib/terahz/run.sh &
-disown
