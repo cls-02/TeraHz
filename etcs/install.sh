@@ -5,7 +5,6 @@ apt install -y python3 python3-pip lighttpd dnsmasq hostapd libatlas-base-dev
 pip3 install numpy pandas flask smbus2 pyserial gunicorn
 
 cp -R hostapd/ /etc
-cp -R lighttpd/ /etc
 cp dnsmasq.conf /etc
 cp rc.local /etc
 cp -R ../frontend/* /var/www/html
