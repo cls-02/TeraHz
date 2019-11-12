@@ -12,3 +12,5 @@
 # By default this script does nothing.
 /etc/hostapd/edit_ssid.sh &
 /usr/local/lib/terahz/run.sh &
+sleep 3
+service hostapd restart # restart hostapd to prevent a weird startup race condition
