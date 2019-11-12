@@ -12,9 +12,9 @@ compiling Python on the first generation of Raspberry Pis is also very
 questionable.
 
 Sensors required for operation are:
-+ AS7265x
-+ VEML6075
-+ APDS-9301
+- AS7265x
+- VEML6075
+- APDS-9301
 
 They provide the spectrometry data, UV data and illuminance data, respectively.
 They all support I2C, AS7265x supports UART in addition.
