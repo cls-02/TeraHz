@@ -5,6 +5,7 @@ apt install -y python3 python3-pip lighttpd dnsmasq hostapd libatlas-base-dev
 pip3 install numpy pandas flask smbus2 pyserial gunicorn
 
 cp -R hostapd/ /etc
+chmod +rx /etc/hostapd/edit_ssid.sh
 cp dnsmasq.conf /etc
 cp rc.local /etc
 cp interfaces-terahz /etc/network/interfaces.d/
