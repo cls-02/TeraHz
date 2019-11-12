@@ -1,26 +1,24 @@
-# Development-stable dependencies
-The current development version of TeraHz has been verified to work with:
-
-  - Raspbian Stretch (9)
-  - Python 3.6.8 (built from source code and altinstall'd)
-  - Module versions (direct `pip3.6 list` output):
-
+# 1.0.0-rc1 Dependencies
+The 1.0.0-rc1 version of TeraHz is confirmed to work with:
+- DietPi 6.26.3
+- Python 3.7.3
+- Pip 18.1
+- Following versions of pip3 packages:
 ```
-      Package         Version  
-      --------------- ---------
-      Click           7.0      
-      Flask           1.0.3    
-      itsdangerous    1.1.0    
-      Jinja2          2.10.1   
-      MarkupSafe      1.1.1    
-      numpy           1.16.4   
-      pandas          0.24.2   
-      pip             18.1     
-      pyserial        3.4      
-      python-dateutil 2.8.0    
-      pytz            2019.1   
-      setuptools      40.6.2   
-      six             1.12.0   
-      smbus           1.1.post2
-      Werkzeug        0.15.4   
+Click           7.0    
+Flask           1.1.1  
+gunicorn        20.0.0
+itsdangerous    1.1.0  
+Jinja2          2.10.3
+MarkupSafe      1.1.1  
+numpy           1.17.4
+pandas          0.25.3
+pip             18.1   
+pyserial        3.4    
+python-dateutil 2.8.1  
+pytz            2019.3
+setuptools      41.6.0
+six             1.13.0
+smbus2          0.3.0  
+Werkzeug        0.16.0
 ```
