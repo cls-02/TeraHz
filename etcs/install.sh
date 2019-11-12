@@ -1,4 +1,6 @@
 # install.sh - install TeraHz onto a Raspbian or DietPi installation
+cd `dirname $0`
+
 apt -y update
 apt -y full-upgrade
 apt install -y python3 python3-pip lighttpd dnsmasq hostapd libatlas-base-dev
