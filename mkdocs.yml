@@ -5,5 +5,5 @@ nav:
 - Advanced guides:
   - Build guide: 'build.md'
   - Developer's guide: 'dev-guide.md'
-  - Electrical connections: 'electrical.md'
+  - Electrical guide: 'electrical.md'
   - Latest dependencies: 'dependencies.md'
