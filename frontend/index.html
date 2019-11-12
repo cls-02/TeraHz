@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf8">
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheet.css">
+  <title>TeraHz</title>
+</head>
+
+<body>
+  <div class="container text-center">
+    <h1><img src="lib/logo-sq.png" height="64px">TeraHz</h1>
+
+  </div>
+  <div class="container">
+    <button id="update" class="btn btn-primary m-1 float-right">Get data</button>
+    <p id="debug">
+    </p>
+    <h3>Spectrogram</h3>
+    <div id="graph" style="height:480px;width:720px"></div>
+    <h3>Spectral readings</h3>
+    <table class="table table-dark table-sm" id="specter">
+      <thead class="thead-dark">
+        <tr>
+          <th>Band</th>
+          <th>Wavelength [nm]</th>
+          <th>Irradiance [μW/cm²]</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>A</td>
+        <td>410 nm</td>
+        <td id="A">---</td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td>435 nm</td>
+        <td id="B">---</td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td>460 nm</td>
+        <td id="C">---</td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td>485 nm</td>
+        <td id="D">---</td>
+      </tr>
+      <tr>
+        <td>E</td>
+        <td>510 nm</td>
+        <td id="E">---</td>
+      </tr>
+      <tr>
+        <td>F</td>
+        <td>535 nm</td>
+        <td id="F">---</td>
+      </tr>
+      <tr>
+        <td>G</td>
+        <td>560 nm</td>
+        <td id="G">---</td>
+      </tr>
+      <tr>
+        <td>H</td>
+        <td>585 nm</td>
+        <td id="H">---</td>
+      </tr>
+      <tr>
+        <td>R</td>
+        <td>610 nm</td>
+        <td id="R">---</td>
+      </tr>
+      <tr>
+        <td>I</td>
+        <td>645 nm</td>
+        <td id="I">---</td>
+      </tr>
+      <tr>
+        <td>S</td>
+        <td>680 nm</td>
+        <td id="S">---</td>
+      </tr>
+      <tr>
+        <td>J</td>
+        <td>705 nm</td>
+        <td id="J">---</td>
+      </tr>
+      <tr>
+        <td>T</td>
+        <td>730 nm</td>
+        <td id="T">---</td>
+      </tr>
+      <tr>
+        <td>U</td>
+        <td>760 nm</td>
+        <td id="U">---</td>
+      </tr>
+      <tr class="table-secondary">
+        <td>V</td>
+        <td>810 nm</td>
+        <td id="V">---</td>
+      </tr>
+      <tr class="table-secondary">
+        <td>W</td>
+        <td>860 nm</td>
+        <td id="W">---</td>
+      </tr>
+      <tr class="table-secondary">
+        <td>K</td>
+        <td>900 nm</td>
+        <td id="K">---</td>
+      </tr>
+      <tr class="table-secondary">
+        <td>L</td>
+        <td>940 nm</td>
+        <td id="L">---</td>
+      </tr>
+    </table>
+    <br>
+    <h3>Lux and UV readings</h3>
+    <table class="table-dark table" id="luxuv">
+      <thead class="thead-dark">
+        <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>Illuminance [lx]</td>
+        <td id="lx">---</td>
+      </tr>
+      <tr>
+        <td>UVA irradiance [μW/cm²]</td>
+        <td id="uva">---</td>
+      </tr>
+      <tr>
+        <td>UVB irradiance [μW/cm²]</td>
+        <td id="uvb">---</td>
+      </tr>
+      <tr>
+        <td>UVA/UVB average [μW/cm²]</td>
+        <td id="uvi">---</td>
+      </tr>
+    </table>
+  </div>
+  <script src="lib/bootstrap.bundle.min.js"></script>
+  <script src="lib/jquery-3.4.1.min.js"></script>
+  <script src="lib/flot/jquery.flot.js"></script>
+  <script src="frontend.js"></script>
+  <script src="lib/flot/jquery.canvaswrapper.js"></script>
+  <script src="lib/flot/jquery.colorhelpers.js"></script>
+  <script src="lib/flot/jquery.flot.js"></script>
+  <script src="lib/flot/jquery.flot.saturated.js"></script>
+  <script src="lib/flot/jquery.flot.browser.js"></script>
+  <script src="lib/flot/jquery.flot.drawSeries.js"></script>
+  <script src="lib/flot/jquery.flot.uiConstants.js"></script>
+</body>
+
+</html>
