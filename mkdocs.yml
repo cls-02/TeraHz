@@ -1,9 +1,0 @@
-site_name: TeraHz Documentation
-theme: readthedocs
-nav:
-- Start page: 'index.md'
-- Advanced guides:
-  - Build guide: 'build.md'
-  - Developer's guide: 'dev-guide.md'
-  - Electrical connections: 'electrical.md'
-  - Latest dependencies: 'dependencies.md'
