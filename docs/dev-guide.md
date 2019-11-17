@@ -7,17 +7,12 @@ TeraHz was developed on and for the Raspberry Pi 3 Model B+. Compatibility with
 other Raspberries can probably be achieved by tweaking the device paths in the
 `app.py` file, but isn't confirmed at this point. Theoretically, 3 Model B and
 Zero W should work out of the box, but models without Wi-Fi will need an
-external Wi-Fi adapter if Wi-Fi functionality is desired. The practicality of
-compiling Python on the first generation of Raspberry Pis is also very
-questionable.
+external Wi-Fi adapter if Wi-Fi functionality is desired.
 
-Sensors required for operation are:
-- AS7265x
-- VEML6075
-- APDS-9301
-
-They provide the spectrometry data, UV data and illuminance data, respectively.
-They all support I2C, AS7265x supports UART in addition.
+TeraHz depends on three separate sensor boards:
+- AS7265x spectral chipset
+- VEML6075 UV sensor
+- APDS-9301 lux-meter
 
 The sensors leech power from the GPIO connector, thus eliminating the need for a
 separate power supply. The necessary power for the whole system is delivered through
