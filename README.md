@@ -1,23 +1,34 @@
-# TeraHz
-
 [![Documentation Status](https://readthedocs.org/projects/terahz/badge/?version=latest)](https://terahz.readthedocs.io/en/latest/?badge=latest)
+# <img alt="TeraHz logo" src="docs/imgs/logo-sq.png" width="200px"> TeraHz
 
-TeraHz is a low-cost spectrometer based on a Raspberry Pi 3 or 3 B+ and three sensors:
- + [__AS7265x__](https://www.tindie.com/products/onehorse/compact-as7265x-spectrometer/)
- is a 18 channel spectrometer chipset that provides the device with spectral data
- + [__VEML6075__](https://www.sparkfun.com/products/15089) is an
- UVA/UVB sensor
- + [__APDS-9301__](https://www.sparkfun.com/products/14350) is a calibrated illuminance (lux) meter that provides the device with reliable readings
+*Za slovensko različico se odpravite na <http://git.sckr-lab.tk/kristjank/TeraHz>*
 
-## Why?
-Because people and institutions could use an affordable and accurate light-analysing device that is also portable, easy to use and simple to assemble. TeraHz was started as an answer to our high school not being able to afford a commercially available solution. One TeraHz spectrometer costs around 150$ in parts, which makes it a competitive alternative to other solutions on the market today.
+TeraHz is a low-cost portable spectrometer based on Raspberry Pi and a few
+commonly available sensor breakout boards. It's designed to bring low-cost
+scientific exploration of the light spectrum to educational institutions that
+cannot afford the options available on the current market. It costs less than
+200€ with money to spare and uses only free, libre and open-source software
+(FLOSS). It is free to use under the ISC license, a spiritual successor to the
+classic 3-clause BSD license.
+
+## How to install
+Stable releases are available under the releases tab and can be installed either
+by flashing a **preinstalled** ready to boot image with a stable version of
+TeraHz preinstalled or by flashing a **preconfigured** image of DietPi and
+installing TeraHz manually, which is useful if you want to test bleeding edge
+releases. For more information, check out the [Build
+guide](https://terahz.readthedocs.io/en/latest/build/).
+
+## Docs
+TeraHz usually works out of the box. A wireless network named `TeraHz_XXXXXX`
+(XXXXXX = the last half of the MAC address) will appear. Password is
+`terahertz`. After connection, open a web browser and visit `terahz.site`.
+The UI will appear. To fetch data from the sensors, press the 'Get Data' button.
+The readings are then plotted and written into the tables below the graph.
+
+More documentation is available at <https://terahz.readthedocs.io>
 
 ## Development team
-Copyright 2018, 2019
-
-- Kristjan "cls-02" Komloši (electronics, sensor drivers, backend)
-- Jakob "D3m1j4ck" Kosec (frontend)
-
-
-I would also like to thank Juš "ANormalPerson" Dolžan, who decided to leave the
-team, but helped me a lot with backend development.
+- Kristjan Komloši (cls-02) - Project leader and main programmer
+- Jakob Kosec (D3m1j4ck) - Frontend designer
+- Juš Dolžan (ANormalPerson) - Math double-checker
