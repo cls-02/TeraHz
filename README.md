@@ -34,4 +34,8 @@ More documentation is available at <https://terahz.readthedocs.io>
 - Juš Dolžan (ANormalPerson) - Math double-checker
 
 <img alt="TeraHz logo" src="http://www.sckr.si/documents/upload/konektor/logo/_SC.gif" width="200px">  
+<<<<<<< HEAD
 TeraHz has been developed under guidance and financial support of Šolski Center Kranj (Kranj School Centre). Without their support, this project might have never been possible.
+=======
+TeraHz has been developed under guidance and financial support of Šolski Center Kranj (Kranj School Centre). Without their support, this project might have never been possible. As the project leader, I would like to personally thank prof. Darija Kramarič, who brought my idea to life; and Jože Drenovec, who provided me with everything needed for my experiments.
+>>>>>>> 682fe20db291234c1ad2ff8ecb6c142c00220c32
