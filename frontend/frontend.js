@@ -22,11 +22,11 @@ function graphSpectralData (obj, dom) {
   var graphPoints = [];
   var graphXTicks = [];
 
-  Object.keys(obj).forEach((element, index) => {
-    graphPoints.push([index, obj[element]]); // build array of points
-    graphXTicks.push([index, element]); // build array of axis labels
-  });
-  // console.log(graphPoints);
+  const specter = 'ABCDEFGHRISJTUVWKL';
+  for (var i = 0; i < specter.length; i++) {
+    graphPoints.push([i, obj[specter[i]]]);
+    graphXTicks.push([i, specter[i]]);
+  }
   const options = {
     grid: {color: 'white'},
     xaxis: {ticks: graphXTicks}
