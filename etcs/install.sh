@@ -9,8 +9,9 @@ pip3 install numpy pandas flask smbus2 pyserial gunicorn
 cp -R hostapd/ /etc
 chmod +rx /etc/hostapd/edit_ssid.sh
 cp dnsmasq.conf /etc
+
 cp rc.local /etc
-chmod +rx /etc/rc.conf
+chmod +rx /etc/rc.local
 cp interfaces-terahz /etc/network/interfaces.d/
 
 cp -R ../frontend/* /var/www/
