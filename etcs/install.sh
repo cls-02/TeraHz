@@ -12,7 +12,7 @@ cp dnsmasq.conf /etc
 cp rc.local /etc
 cp interfaces-terahz /etc/network/interfaces.d/
 
-cp -R ../frontend/* /var/www/html
+cp -R ../frontend/* /var/www/
 mkdir -p /usr/local/lib/terahz
 cp -R ../backend/* /usr/local/lib/terahz
 
