@@ -10,6 +10,7 @@ cp -R hostapd/ /etc
 chmod +rx /etc/hostapd/edit_ssid.sh
 cp dnsmasq.conf /etc
 cp rc.local /etc
+chmod +rx /etc/rc.conf
 cp interfaces-terahz /etc/network/interfaces.d/
 
 cp -R ../frontend/* /var/www/
