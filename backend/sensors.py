@@ -65,8 +65,8 @@ class Spectrometer:
             raise Exception(
                 'An exception occurred when polling for spectrometer data')
         else:
-            responseorder = [i for i in 'RSTUVWGHIJKLABCDEF']
-            realorder = [i for i in 'ABCDEFGHRISJTUVWKL']
+            responseorder = list('RSTUVWGHIJKLABCDEF')
+            realorder = list('ABCDEFGHRISJTUVWKL')
             response = pd.Series(
                 [float(i) / 35.0 for i in rawresp[:-3].split(',')], index=responseorder)
             return pd.DataFrame(response, index=realorder, columns=['uW/cm^2']).to_dict()['uW/cm^2']
