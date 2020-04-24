@@ -1,8 +1,7 @@
 # app.py - main backend program
 '''Main TeraHz backend program'''
 # All code in this file is licensed under the ISC license, provided in LICENSE.txt
-from flask import Flask
-import flask
+from flask import Flask, jsonify
 import sensors
 
 app = Flask(__name__)
