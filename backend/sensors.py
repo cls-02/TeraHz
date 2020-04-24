@@ -160,7 +160,7 @@ class LxMeter:
         except:
             raise Exception('An exception occured fetching lux channels')
 
-        # scary computations ahead! refer to the apds-9301 datasheet!
+        # Refer to APDS-9301 datasheet!
         if chB / chA <= 0.5 and chB / chA > 0:
             lux = 0.0304 * chA - 0.062 * chA * (chB / chA)**1.4
         elif chB / chA <= 0.61 and chB / chA > 0.5:
@@ -187,6 +187,12 @@ class UVSensor:
         try:
             # enable the sensor and set the integration time
             self.bus.write_byte_data(self.addr, 0x00, 0b00010000)
+
+            # trigger a measurement to prevent bus errors at first read
+            self.bus.write_byte_data(self.addr, 0x00, 0b00010010) # UV_AF=1
+            self.bus.write_byte_data(self.addr, 0x00, 0b00010110) # UV_TRIG=1
+            self.bus.write_byte_data(self.addr, 0x00, 0b00010000) # normal mode
+
         except:
             raise Exception(
                 'An exception occured when initalizing the UV Sensor')
@@ -203,38 +209,14 @@ class UVSensor:
             c2 = self.bus.read_word_data(self.addr, 0x0b)
         except:
             raise Exception('An exception occured when fetching raw UV data')
-        # scary computations ahead! refer to Vishay app note 84339 and Sparkfun
-        # VEML6075 documentation.
+        # Refer to Vishay app note 84339 and Sparkfun VEML6075 documentation.
+        # The computed values may be negative if UV is vastly weaker than
+        # visible and IR light. This is not a bug!
 
-        # compensate for visible and IR noise
-        aCorr = aRaw - 2.22 * c1 - 1.33 * c2
-        bCorr = bRaw - 2.95 * c1 - 1.74 * c2
-
-        # convert values into irradiances
-        a = aCorr * 1.06
-        b = bCorr * 0.48
-
-        # zero out negative results (readings with no uv)
-        if a < 0:
-            a = 0
-        if b < 0:
-            b = 0
-        # last, calculate the UV index
-        i = (a + b) / 2
-
+        a = (aRaw - 2.22 * c1 - 1.33 * c2) * 1.06
+        b = (bRaw - 2.95 * c1 - 1.74 * c2) * 0.48
+        i = (a + b) / 2 # calculate UV index
         return [a, b, i]
-
-    def getA(self):
-        '''Returns UVA value. A getABI() wrapper.'''
-        return self.getABI()[0]
-
-    def getB(self):
-        '''Returns UVB value. A getABI() wrapper.'''
-        return self.getABI()[1]
-
-    def getI(self):
-        '''Returns UV index. A getABI() wrapper.'''
-        return self.getABI()[2]
 
     def on(self):
         '''Turns the UV sensor on after shutdown.'''
