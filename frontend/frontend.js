@@ -1,7 +1,5 @@
 // All code in this file is licensed under the ISC license, provided in LICENSE.txt
-$('#update').click(function () {
-  updateData();
-});
+$('#update').click(updateData);
 // jQuery event binder
 
 function updateData () {
@@ -28,8 +26,8 @@ function graphSpectralData (obj, dom) {
     graphXTicks.push([i, specter[i]]);
   }
   const options = {
-    grid: {color: 'white'},
-    xaxis: {ticks: graphXTicks}
+    grid: { color: 'white' },
+    xaxis: { ticks: graphXTicks }
   };
   $.plot('#graph', [graphPoints], options);
   // flot expects an array of arrays (lines) of 2-element arrays (points)
