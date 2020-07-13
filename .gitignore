@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Include frontend libraries though
-!/frontend/lib
+# Include frontend ibraries though
+!terahz/templates/lib
