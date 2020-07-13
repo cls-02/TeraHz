@@ -7,6 +7,9 @@ import pandas as pd
 import smbus2
 
 
+
+
+
 class Spectrometer:
     '''Class representing the AS7265X specrometer'''
 
