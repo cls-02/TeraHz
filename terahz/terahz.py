@@ -1,14 +1,10 @@
-# sensors.py - a module for interfacing to the sensors
+# terahz.py - a module for interfacing to the sensors
 '''Module for interfacing with TeraHz sensors'''
 # Copyright 2019, 2020 Kristjan Komloši
 # All code in this file is licensed under the ISC license, provided in LICENSE.txt
 import serial as ser
 import pandas as pd
 import smbus2
-
-
-
-
 
 class Spectrometer:
     '''Class representing the AS7265X specrometer'''
