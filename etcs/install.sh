@@ -15,6 +15,7 @@ chmod +rx /etc/rc.local
 cp interfaces-terahz /etc/network/interfaces.d/
 
 cp -R ../frontend/* /var/www/html/
+
 mkdir -p /usr/local/lib/terahz
 cp -R ../backend/* /usr/local/lib/terahz
 
