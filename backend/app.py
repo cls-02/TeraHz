@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/data')
 def sendData():
     '''Responder function for /data route'''
-    s = sensors.Spectrometer(path='/dev/serial0', baudrate=115200, tout=1)
+    s = sensors.Spectrometer(path='/dev/serial0')
     u = sensors.UVSensor()
     l = sensors.LxMeter()
     response = jsonify([s.getData(), l.getData(), u.getABI()])

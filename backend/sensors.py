@@ -6,8 +6,10 @@ import serial as ser
 import pandas as pd
 import smbus2
 
+
 class Spectrometer:
     '''Class representing the AS7265X specrometer'''
+
     def initializeSensor(self):
         '''confirm the sensor is responding and proceed\
          with spectrometer initialization'''
@@ -23,8 +25,7 @@ class Spectrometer:
             if rstring == 'ERROR':
                 raise Exception  # sensor is in error state
         except:
-            raise Exception(
-                'An exception ocurred when performing spectrometer handshake')
+            raise Exception('No AT command response')
 
     def setParameters(self, parameters):
         '''applies the parameters like LED light and gain to the spectrometer'''
@@ -53,8 +54,7 @@ class Spectrometer:
                 self.serialObject.write('ATLED3={}\n'.format(led).encode())
                 self.serialObject.readline()
         except:
-            raise Exception(
-                'An exception occured during spectrometer initialization')
+            raise Exception('Error setting spectrometer parameters')
 
     def getData(self):
         '''Returns spectral data in a pandas DataFrame.'''
@@ -62,8 +62,7 @@ class Spectrometer:
             self.serialObject.write(b'ATCDATA\n')
             rawresp = self.serialObject.readline().decode()
         except:
-            raise Exception(
-                'An exception occurred when polling for spectrometer data')
+            raise Exception('Error polling spectrometer data')
         else:
             responseorder = list('RSTUVWGHIJKLABCDEF')
             realorder = list('ABCDEFGHRISJTUVWKL')
@@ -78,14 +77,14 @@ class Spectrometer:
         try:
             self.serialObject = ser.Serial(path, baudrate, timeout=tout)
         except:
-            raise Exception(
-                'An exception occured when opening the serial port at {}'.format(path))
+            raise Exception('Error opening serial port: {}'.format(path))
         else:
             self.initializeSensor()
 
 
 class LxMeter:
     '''Class representing the APDS-9301 digital photometer.'''
+
     def __init__(self, busNumber=1, addr=0x39):
         self.addr = addr
         try:
@@ -93,14 +92,14 @@ class LxMeter:
             self.bus = smbus2.SMBus(busNumber)
         except:
             raise Exception(
-                'An exception occured opening the SMBus {}'.format(self.bus))
+                'Error opening SMBus {}'.format(self.bus))
 
         try:
             self.bus.write_byte_data(
                 self.addr, 0xa0, 0x03)  # enable the sensor
             self.setGain(16)
         except:
-            raise Exception('An exception occured when enabling lux meter')
+            raise Exception('Error enabling lux meter')
 
     def setGain(self, gain):
         '''Set the sensor gain. Either 1 or 16.'''
@@ -109,15 +108,13 @@ class LxMeter:
                 temp = self.bus.read_byte_data(self.addr, 0xa1)
                 self.bus.write_byte_data(self.addr, 0xa1, 0xef & temp)
             except:
-                raise Exception(
-                    'An exception occured when setting lux meter gain')
+                raise Exception('Error setting lux meter gain')
         if gain == 16:
             try:
                 temp = self.bus.read_byte_data(self.addr, 0xa1)
                 self.bus.write_byte_data(self.addr, 0xa1, 0x10 | temp)
             except:
-                raise Exception(
-                    'An exception occured when setting lux meter gain')
+                raise Exception('Error setting lux meter gain')
         else:
             raise Exception('Invalid gain')
 
@@ -176,6 +173,7 @@ class LxMeter:
 
 class UVSensor:
     '''Class representing VEML6075 UVA/B meter'''
+
     def __init__(self, bus=1, addr=0x10):
         self.addr = addr
         try:
@@ -189,13 +187,14 @@ class UVSensor:
             self.bus.write_byte_data(self.addr, 0x00, 0b00010000)
 
             # trigger a measurement to prevent bus errors at first read
-            self.bus.write_byte_data(self.addr, 0x00, 0b00010010) # UV_AF=1
-            self.bus.write_byte_data(self.addr, 0x00, 0b00010110) # UV_TRIG=1
-            self.bus.write_byte_data(self.addr, 0x00, 0b00010000) # normal mode
+            self.bus.write_byte_data(self.addr, 0x00, 0b00010010)  # UV_AF=1
+            self.bus.write_byte_data(self.addr, 0x00, 0b00010110)  # UV_TRIG=1
+            self.bus.write_byte_data(
+                self.addr, 0x00, 0b00010000)  # normal mode
 
         except:
             raise Exception(
-                'An exception occured when initalizing the UV Sensor')
+                'Error initalizing the UV Sensor')
 
     def getABI(self):
         '''Calculates the UVA and UVB irradiances,
@@ -208,14 +207,14 @@ class UVSensor:
             c1 = self.bus.read_word_data(self.addr, 0x0a)
             c2 = self.bus.read_word_data(self.addr, 0x0b)
         except:
-            raise Exception('An exception occured when fetching raw UV data')
+            raise Exception('Error fetching raw UV data')
         # Refer to Vishay app note 84339 and Sparkfun VEML6075 documentation.
         # The computed values may be negative if UV is vastly weaker than
         # visible and IR light. This is not a bug!
 
         a = (aRaw - 2.22 * c1 - 1.33 * c2) * 1.06
         b = (bRaw - 2.95 * c1 - 1.74 * c2) * 0.48
-        i = (a + b) / 2 # calculate UV index
+        i = (a + b) / 2  # calculate UV index
         return [a, b, i]
 
     def on(self):
@@ -226,7 +225,7 @@ class UVSensor:
             self.bus.write_byte_data(self.addr, 0x00, 0x10)
         except:
             raise Exception(
-                'An exception occured when turning the UV sensor on')
+                'Error turning the UV sensor on')
 
     def off(self):
         '''Shuts the UV sensor down.'''
@@ -236,4 +235,4 @@ class UVSensor:
             self.bus.write_byte_data(self.addr, 0x00, 0x11)
         except:
             raise Exception(
-                'An exception occured when shutting the UV sensor down')
+                'Error shutting the UV sensor down')
