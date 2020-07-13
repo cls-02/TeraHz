@@ -14,3 +14,7 @@ def sendData():
     response = jsonify([s.getData(), l.getData(), u.getABI()])
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
+@app.route('/')
+def renderTable()
+    return render_template('index.html')
