@@ -1,4 +1,5 @@
 [![Documentation Status](https://readthedocs.org/projects/terahz/badge/?version=latest)](https://terahz.readthedocs.io/en/latest/?badge=latest)
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/standard/semistandard)
 # <img alt="TeraHz logo" src="docs/imgs/logo-sq.png" width="200px"> TeraHz
 
 *Za slovensko različico se odpravite na <http://git.sckr-lab.tk/kristjank/TeraHz>*
