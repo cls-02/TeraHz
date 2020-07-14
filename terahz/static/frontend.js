@@ -3,15 +3,12 @@ $('#update').click(updateData);
 // jQuery event binder
 
 function updateData () {
-  const url = 'http://' + window.location.hostname + ':5000/data';
-  $.ajax({ // spawn an AJAX request
-    url: url,
-    success: function (data, status) {
-      console.log(data);
+const url = '/data';
+  $.get(url, (data, status) => {
+    if (status === '200') {
       graphSpectralData(data[0], 0);
       fillTableData(data);
-    },
-    timeout: 2500 // this should be a pretty sane timeout
+    } else alert('Data request failed, please refresh page.');
   });
 }
 
