@@ -20,10 +20,10 @@ function graphSpectralData (obj, dom) {
   var graphPoints = [];
   var graphXTicks = [];
 
-  const specter = 'ABCDEFGHRISJTUVWKL';
-  for (var i = 0; i < specter.length; i++) {
-    graphPoints.push([i, obj[specter[i]]]);
-    graphXTicks.push([i, specter[i]]);
+  const spectrum = 'ABCDEFGHRISJTUVWKL';
+  for (var i = 0; i < spectrum.length; i++) {
+    graphPoints.push([i, obj[spectrum[i]]]);
+    graphXTicks.push([i, spectrum[i]]);
   }
   const options = {
     grid: { color: 'white' },
