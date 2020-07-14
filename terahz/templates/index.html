@@ -2,96 +2,97 @@
 <html>
 
 <head>
-  <meta charset="utf8">
-  <link rel="stylesheet" href="static/bootstrap.min.css">
-  <link rel="stylesheet" href="static/stylesheet.css">
-  <title>TeraHz</title>
-  <!-- script imports -->
-  <script src="static/bootstrap.bundle.min.js"></script>
-  <script src="static/jquery-3.4.1.min.js"></script>
-  <script src="static/flot/jquery.flot.js"></script>
-  <script src="static/frontend.js"></script>
-  <script src="static/flot/jquery.canvaswrapper.js"></script>
-  <script src="static/flot/jquery.colorhelpers.js"></script>
-  <script src="static/flot/jquery.flot.js"></script>
-  <script src="static/flot/jquery.flot.saturated.js"></script>
-  <script src="static/flot/jquery.flot.browser.js"></script>
-  <script src="static/flot/jquery.flot.drawSeries.js"></script>
-  <script src="static/flot/jquery.flot.uiConstants.js"></script>
+    <meta charset="utf8">
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/stylesheet.css">
+    <title>TeraHz</title>
+    <!-- script imports -->
+    <script src="static/bootstrap.bundle.min.js"></script>
+    <script src="static/jquery-3.4.1.min.js"></script>
+    <script src="static/flot/jquery.flot.js"></script>
+    <script src="static/frontend.js"></script>
+    <script src="static/flot/jquery.canvaswrapper.js"></script>
+    <script src="static/flot/jquery.colorhelpers.js"></script>
+    <script src="static/flot/jquery.flot.js"></script>
+    <script src="static/flot/jquery.flot.saturated.js"></script>
+    <script src="static/flot/jquery.flot.browser.js"></script>
+    <script src="static/flot/jquery.flot.drawSeries.js"></script>
+    <script src="static/flot/jquery.flot.uiConstants.js"></script>
 </head>
 
 <body>
-  <div class="container text-center">
-    <h1><img src="static/logo-sq.png" height="64px">TeraHz</h1>
-  </div>
-
-  <div class="container">
-    <button id="update" onclick="updateData()" class="btn btn-primary">Get data</button>
-    <button id="download" class="btn btn-primary">Download</button>
-    <button id="debug" class="btn btn-danger">DEBUG</button>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <h4>Spectrogram</h4>
-        <div id="graph" style="height:480px;width:720px"></div>
-      </div>
-
-      <div class="col-sm">
-        <h4>Visible+IR spectrum</h4>
-        <table class="table table-dark table-sm" id="specter">
-          <thead class="thead-dark">
-            <tr>
-              <th>Band</th>
-              <th>Wavelength [nm]</th>
-              <th>Irradiance [μW/cm²]</th>
-            </tr>
-          </thead>
-          {% for band, irr in data[0] %}
-            <tr id="{{band}}">
-                <td>
-                    {{band}}
-                </td>
-                <td>
-                    {{wld[band]}}
-                </td>
-                <td>
-                    {{irr}}
-                </td>
-            </tr>
-        </table>
-      </div>
-
-      <div class="col-sm">
-        <h4>UV+Illuminance</h4>
-        <table class="table-dark table table-sm" id="luxuv">
-          <thead class="thead-dark">
-            <tr>
-              <th>Parameter</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tr>
-            <td>Illuminance [lx]</td>
-            <td id="lx">{{data[1]}}</td>
-          </tr>
-          <tr>
-            <td>UVA irradiance [μW/cm²]</td>
-            <td id="uva">{{data[2][0]}}</td>
-          </tr>
-          <tr>
-            <td>UVB irradiance [μW/cm²]</td>
-            <td id="uvb">{{data[2][1]}}</td>
-          </tr>
-          <tr>
-            <td>UVA/UVB average [μW/cm²]</td>
-            <td id="uvi">{{data[2][2]}}</td>
-          </tr>
-        </table>
-      </div>
+    <div class="container text-center">
+        <h1><img src="static/logo-sq.png" height="64px">TeraHz</h1>
     </div>
-  </div>
+
+    <div class="container">
+        <button id="update" onclick="updateData()" class="btn btn-primary">Get data</button>
+        <button id="download" class="btn btn-primary">Download</button>
+        <button id="debug" class="btn btn-danger">DEBUG</button>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h4>Spectrogram</h4>
+                <div id="graph" style="height:480px;width:720px"></div>
+            </div>
+
+            <div class="col-sm">
+                <h4>Visible+IR spectrum</h4>
+                <table class="table table-dark table-sm" id="specter">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Band</th>
+                            <th>Wavelength [nm]</th>
+                            <th>Irradiance [μW/cm²]</th>
+                        </tr>
+                    </thead>
+                    {% for band, irr in data[0] %}
+                    <tr id="{{band}}">
+                        <td>
+                            {{band}}
+                        </td>
+                        <td>
+                            {{wld[band]}}
+                        </td>
+                        <td>
+                            {{irr}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="col-sm">
+                <h4>UV+Illuminance</h4>
+                <table class="table-dark table table-sm" id="luxuv">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Illuminance [lx]</td>
+                        <td id="lx">{{data[1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>UVA irradiance [μW/cm²]</td>
+                        <td id="uva">{{data[2][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>UVB irradiance [μW/cm²]</td>
+                        <td id="uvb">{{data[2][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>UVA/UVB average [μW/cm²]</td>
+                        <td id="uvi">{{data[2][2]}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
