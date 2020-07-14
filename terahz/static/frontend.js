@@ -36,7 +36,7 @@ function graphSpectralData (obj, dom) {
 function fillTableData (obj) {
   // fill the obj data into HTML tables
   Object.keys(obj[0])
-    .forEach((element) => { $('#' + element).text(obj[0][element]); });
+    .forEach((element) => { $('#' + element + '_value').text(obj[0][element]); });
   $('#lx').text(obj[1]);
   $('#uva').text(obj[2][0]);
   $('#uvb').text(obj[2][1]);
