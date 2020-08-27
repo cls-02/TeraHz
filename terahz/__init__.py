@@ -1,10 +1,11 @@
 # app.py - main backend program
 '''Main TeraHz backend program'''
 # All code in this file is licensed under the ISC license, provided in LICENSE.txt
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from . import terahz
 
 def start_flaskapp():
+    '''Initialize global variables'''
     global app, s, u, l
     app = Flask(__name__)
     s = terahz.Spectrometer(path='/dev/serial0')
@@ -21,6 +22,7 @@ def sendData():
 
 @app.route('/')
 def renderTable():
+    ''''Main page renderer'''
     wavelengthDict = {
         'A': '410 nm',
         'B': '435 nm',
@@ -41,4 +43,4 @@ def renderTable():
         'K': '900 nm',
         'L': '940 nm'}
     data = [s.getData(), l.getData(), u.getABI()]
-    return render_template('index.html', data = data, wavelengths = wavelengthDict)
+    return render_template('index.html', data=data, wavelengths=wavelengthDict)

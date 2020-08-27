@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="terahz", # Replace with your own username
-    version="0.0.1",
+    version="1.0.0",
     author="Kristjan Komloši",
     author_email="kristjan.komlosi@gmail.com",
     description="Low cost spectrometry webapp",
