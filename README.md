@@ -1,6 +1,6 @@
 [![Documentation Status](https://readthedocs.org/projects/terahz/badge/?version=latest)](https://terahz.readthedocs.io/en/latest/?badge=latest)
 # <img alt="TeraHz logo" src="docs/imgs/logo-sq.png" width="200px"> TeraHz
-
+*This project is currently at a standstill because SparkFUN stopped making one of the board this project needs. TeraHz will return in a better form some day!*
 *Za slovensko različico se odpravite na <http://git.sckr-lab.tk/kristjank/TeraHz>*
 
 TeraHz is a low-cost portable spectrometer based on Raspberry Pi and a few
